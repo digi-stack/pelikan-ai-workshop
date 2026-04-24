@@ -3350,6 +3350,29 @@ Po Q&A — osobný kontakt pri východe.
         setTimeout(() => kbHint.classList.remove('visible'), 4000);
     }, 500);
 
+    // Helper function - dostupna vzdy, nie len v notes mode
+    const updateNotesPanelLocal = (n) => {
+        const currentSlideEl = slides[n - 1];
+        const notesEl = currentSlideEl ? currentSlideEl.querySelector('aside.notes') : null;
+        const titleEl = currentSlideEl ? currentSlideEl.querySelector('h1, .statement') : null;
+        const nextSlideEl = slides[n];
+        const nextTitleEl = nextSlideEl ? nextSlideEl.querySelector('h1, .statement') : null;
+
+        const notesText = notesEl ? notesEl.textContent.trim() : '(Žiadne poznámky pre tento slajd.)';
+        const titleText = titleEl ? titleEl.textContent.trim() : `Slide ${n}`;
+        const nextText = nextTitleEl ? nextTitleEl.textContent.trim() : '(Koniec prezentácie)';
+
+        const slideNumEl = document.getElementById('sn-slide');
+        const titleEl2 = document.getElementById('sn-title');
+        const notesContentEl = document.getElementById('sn-notes');
+        const nextEl = document.getElementById('sn-next');
+
+        if (slideNumEl) slideNumEl.textContent = `${n} / ${totalSlides}`;
+        if (titleEl2) titleEl2.textContent = titleText;
+        if (notesContentEl) notesContentEl.textContent = notesText;
+        if (nextEl) nextEl.textContent = nextText;
+    };
+
     // ===== NOTES ROLE - transformuj stranku na notes panel =====
     if (pageRole === 'notes') {
         // Skry slajdy, nav, progress bar, kb hint
@@ -3376,30 +3399,7 @@ Po Q&A — osobný kontakt pri východe.
         }
         try { localStorage.setItem(SYNC_LS_KEY, JSON.stringify(reqMsg)); } catch(e) {}
 
-        // Prepis updateNotesWindow aby update-ol lokalny DOM
-        function updateNotesPanelLocal(n) {
-            const currentSlideEl = slides[n - 1];
-            const notesEl = currentSlideEl ? currentSlideEl.querySelector('aside.notes') : null;
-            const titleEl = currentSlideEl ? currentSlideEl.querySelector('h1, .statement') : null;
-            const nextSlideEl = slides[n];
-            const nextTitleEl = nextSlideEl ? nextSlideEl.querySelector('h1, .statement') : null;
-
-            const notesText = notesEl ? notesEl.textContent.trim() : '(Žiadne poznámky pre tento slajd.)';
-            const titleText = titleEl ? titleEl.textContent.trim() : `Slide ${n}`;
-            const nextText = nextTitleEl ? nextTitleEl.textContent.trim() : '(Koniec prezentácie)';
-
-            const slideNumEl = document.getElementById('sn-slide');
-            const titleEl2 = document.getElementById('sn-title');
-            const notesContentEl = document.getElementById('sn-notes');
-            const nextEl = document.getElementById('sn-next');
-
-            if (slideNumEl) slideNumEl.textContent = `${n} / ${totalSlides}`;
-            if (titleEl2) titleEl2.textContent = titleText;
-            if (notesContentEl) notesContentEl.textContent = notesText;
-            if (nextEl) nextEl.textContent = nextText;
-        }
-
-        // Povodny hash v notes okne nemusime sledovat (presenter riadi)
+        // Initial update
         updateNotesPanelLocal(currentSlide);
     }
 
