@@ -2982,10 +2982,11 @@ Po Q&A — osobný kontakt pri východe.
     <button class="nav-btn" id="prev-btn" onclick="prevSlide()" title="Predošlý (←)">‹</button>
     <div class="slide-counter" id="slide-counter">1 / 44</div>
     <button class="nav-btn" id="next-btn" onclick="nextSlide()" title="Ďalší (→)">›</button>
-    <button class="nav-btn" onclick="openNotesWindow()" title="Speaker notes (N)" style="font-size: 13px; font-weight: 500;">📝</button>
+    <button class="nav-btn" onclick="openNotesWindow()" title="Speaker notes popup (N)" style="font-size: 13px; font-weight: 500;">📝</button>
+    <button class="nav-btn" onclick="openSyncedNotesWindow()" title="Speaker notes v druhom okne pre dual-monitor (S)" style="font-size: 13px; font-weight: 500;">🖥️</button>
 </div>
 
-<div class="keyboard-hint" id="kb-hint">← → nav · F fullscreen · N speaker notes · číslo+Enter = skok · ?role=notes = sync notes okno</div>
+<div class="keyboard-hint" id="kb-hint">← → nav · F fullscreen · N notes popup · S notes v druhom okne (dual monitor) · číslo+Enter = skok</div>
 
 <script>
     const slides = document.querySelectorAll('.slide');
@@ -3121,6 +3122,8 @@ Po Q&A — osobný kontakt pri východe.
             toggleFullscreen();
         } else if (e.key === 'n' || e.key === 'N') {
             openNotesWindow();
+        } else if (e.key === 's' || e.key === 'S') {
+            openSyncedNotesWindow();
         }
     });
 
@@ -3290,6 +3293,22 @@ Po Q&A — osobný kontakt pri východe.
         buildNotesDOM(notesWindow.document);
         setTimeout(() => toggleNotesTimer(notesWindow.document), 500);
         setTimeout(() => updateNotesWindow(currentSlide), 300);
+    }
+
+    // Otvor ?role=notes v samostatnom okne - synchronizuje sa cez BroadcastChannel/localStorage
+    let syncedNotesWindow = null;
+    function openSyncedNotesWindow() {
+        if (syncedNotesWindow && !syncedNotesWindow.closed) {
+            syncedNotesWindow.focus();
+            return;
+        }
+        const url = window.location.origin + window.location.pathname + '?role=notes#' + currentSlide;
+        syncedNotesWindow = window.open(url, 'SyncedNotes',
+            'width=1000,height=800,menubar=no,toolbar=no,location=no,status=no');
+        if (!syncedNotesWindow) {
+            alert('Notes okno bolo zablokované prehliadačom. Povoľ popup okná.\n\nAlternativa: rucne otvor v novom okne: ' + url);
+            return;
+        }
     }
 
     function updateNotesWindow(n) {
