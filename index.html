@@ -2985,7 +2985,7 @@ Po Q&A — osobný kontakt pri východe.
     <button class="nav-btn" onclick="openNotesWindow()" title="Speaker notes (N)" style="font-size: 13px; font-weight: 500;">📝</button>
 </div>
 
-<div class="keyboard-hint" id="kb-hint">← → navigácia · F fullscreen · N speaker notes · číslo+Enter = skok na slajd</div>
+<div class="keyboard-hint" id="kb-hint">← → nav · F fullscreen · N speaker notes · číslo+Enter = skok · ?role=notes = sync notes okno</div>
 
 <script>
     const slides = document.querySelectorAll('.slide');
@@ -2995,6 +2995,19 @@ Po Q&A — osobný kontakt pri východe.
     const counter = document.getElementById('slide-counter');
     const progressFill = document.getElementById('progress-fill');
     const kbHint = document.getElementById('kb-hint');
+
+    // ===== BROADCAST CHANNEL - cross-window sync =====
+    const urlParams = new URLSearchParams(window.location.search);
+    const pageRole = urlParams.get('role'); // 'presenter' | 'notes' | null
+    const syncChannel = (typeof BroadcastChannel !== 'undefined')
+        ? new BroadcastChannel('pelikan-workshop-sync')
+        : null;
+
+    function broadcastSlideChange(n) {
+        if (syncChannel && pageRole !== 'notes') {
+            syncChannel.postMessage({ type: 'slide', n: n, ts: Date.now() });
+        }
+    }
 
     function showSlide(n) {
         if (n < 1) n = 1;
@@ -3011,7 +3024,11 @@ Po Q&A — osobný kontakt pri východe.
         progressFill.style.width = `${(n / totalSlides) * 100}%`;
 
         // Update URL hash (for deep linking)
-        history.replaceState(null, '', `#${n}`);
+        const queryStr = window.location.search;
+        history.replaceState(null, '', `${queryStr}#${n}`);
+
+        // Broadcast to synced windows (notes role)
+        broadcastSlideChange(n);
     }
 
     function nextSlide() { showSlide(currentSlide + 1); }
@@ -3046,8 +3063,11 @@ Po Q&A — osobný kontakt pri východe.
         }
     }
 
-    // Keyboard navigation
+    // Keyboard navigation (disabled in notes-only role)
     document.addEventListener('keydown', (e) => {
+        // V notes mode nemaj navigation keys - presenter riadi
+        if (pageRole === 'notes') return;
+
         // Quick-jump: digits buffered, Enter executes, Esc cancels
         if (/^[0-9]$/.test(e.key)) {
             e.preventDefault();
@@ -3310,6 +3330,68 @@ Po Q&A — osobný kontakt pri východe.
         kbHint.classList.add('visible');
         setTimeout(() => kbHint.classList.remove('visible'), 4000);
     }, 500);
+
+    // ===== NOTES ROLE - transformuj stranku na notes panel =====
+    if (pageRole === 'notes') {
+        // Skry slajdy, nav, progress bar, kb hint
+        document.querySelectorAll('.slide, .nav-controls, .progress-bar, .keyboard-hint, #jump-overlay').forEach(el => {
+            el.style.display = 'none';
+        });
+
+        // Premen body na notes panel
+        document.body.style.cssText = 'background: #1a1a1a; overflow: auto; padding: 0;';
+        buildNotesDOM(document);
+        setTimeout(() => toggleNotesTimer(document), 500);
+
+        // Listen for slide changes from presenter
+        if (syncChannel) {
+            syncChannel.onmessage = (e) => {
+                if (e.data && e.data.type === 'slide') {
+                    updateNotesPanelLocal(e.data.n);
+                } else if (e.data && e.data.type === 'request-state') {
+                    // presenter pyta current state, ignorujeme (my sme notes)
+                }
+            };
+            // Request initial state from presenter
+            syncChannel.postMessage({ type: 'request-state' });
+        }
+
+        // Prepis updateNotesWindow aby update-ol lokalny DOM
+        function updateNotesPanelLocal(n) {
+            const currentSlideEl = slides[n - 1];
+            const notesEl = currentSlideEl ? currentSlideEl.querySelector('aside.notes') : null;
+            const titleEl = currentSlideEl ? currentSlideEl.querySelector('h1, .statement') : null;
+            const nextSlideEl = slides[n];
+            const nextTitleEl = nextSlideEl ? nextSlideEl.querySelector('h1, .statement') : null;
+
+            const notesText = notesEl ? notesEl.textContent.trim() : '(Žiadne poznámky pre tento slajd.)';
+            const titleText = titleEl ? titleEl.textContent.trim() : `Slide ${n}`;
+            const nextText = nextTitleEl ? nextTitleEl.textContent.trim() : '(Koniec prezentácie)';
+
+            const slideNumEl = document.getElementById('sn-slide');
+            const titleEl2 = document.getElementById('sn-title');
+            const notesContentEl = document.getElementById('sn-notes');
+            const nextEl = document.getElementById('sn-next');
+
+            if (slideNumEl) slideNumEl.textContent = `${n} / ${totalSlides}`;
+            if (titleEl2) titleEl2.textContent = titleText;
+            if (notesContentEl) notesContentEl.textContent = notesText;
+            if (nextEl) nextEl.textContent = nextText;
+        }
+
+        // Povodny hash v notes okne nemusime sledovat (presenter riadi)
+        updateNotesPanelLocal(currentSlide);
+    }
+
+    // ===== PRESENTER ROLE - reaguj na request-state od notes okien =====
+    if (pageRole !== 'notes' && syncChannel) {
+        syncChannel.onmessage = (e) => {
+            if (e.data && e.data.type === 'request-state') {
+                // Notes okno sa prave pripojilo, posli mu aktualny stav
+                syncChannel.postMessage({ type: 'slide', n: currentSlide, ts: Date.now() });
+            }
+        };
+    }
 </script>
 
 </body>
