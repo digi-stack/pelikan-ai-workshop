@@ -2996,17 +2996,36 @@ Po Q&A — osobný kontakt pri východe.
     const progressFill = document.getElementById('progress-fill');
     const kbHint = document.getElementById('kb-hint');
 
-    // ===== BROADCAST CHANNEL - cross-window sync =====
+    // ===== CROSS-WINDOW SYNC - BroadcastChannel + localStorage fallback =====
     const urlParams = new URLSearchParams(window.location.search);
     const pageRole = urlParams.get('role'); // 'presenter' | 'notes' | null
     const syncChannel = (typeof BroadcastChannel !== 'undefined')
         ? new BroadcastChannel('pelikan-workshop-sync')
         : null;
+    const SYNC_LS_KEY = 'pelikan-workshop-sync-state';
+
+    console.log('[SYNC] Role:', pageRole, '| BroadcastChannel:', !!syncChannel);
 
     function broadcastSlideChange(n) {
-        if (syncChannel && pageRole !== 'notes') {
-            syncChannel.postMessage({ type: 'slide', n: n, ts: Date.now() });
+        if (pageRole === 'notes') return;
+        const msg = { type: 'slide', n: n, ts: Date.now() };
+        if (syncChannel) {
+            try { syncChannel.postMessage(msg); } catch(e) { console.warn('[SYNC] BC post failed:', e); }
         }
+        // Fallback: localStorage event (triggeruje storage event v inych oknach)
+        try { localStorage.setItem(SYNC_LS_KEY, JSON.stringify(msg)); } catch(e) {}
+    }
+
+    function onSyncMessage(handler) {
+        if (syncChannel) {
+            syncChannel.onmessage = (e) => handler(e.data);
+        }
+        // Fallback cez storage event
+        window.addEventListener('storage', (e) => {
+            if (e.key === SYNC_LS_KEY && e.newValue) {
+                try { handler(JSON.parse(e.newValue)); } catch(err) {}
+            }
+        });
     }
 
     function showSlide(n) {
@@ -3343,18 +3362,19 @@ Po Q&A — osobný kontakt pri východe.
         buildNotesDOM(document);
         setTimeout(() => toggleNotesTimer(document), 500);
 
-        // Listen for slide changes from presenter
+        // Listen for slide changes from presenter (BroadcastChannel + localStorage fallback)
+        onSyncMessage((data) => {
+            console.log('[SYNC notes] got:', data);
+            if (data && data.type === 'slide') {
+                updateNotesPanelLocal(data.n);
+            }
+        });
+        // Request initial state from presenter
+        const reqMsg = { type: 'request-state', ts: Date.now() };
         if (syncChannel) {
-            syncChannel.onmessage = (e) => {
-                if (e.data && e.data.type === 'slide') {
-                    updateNotesPanelLocal(e.data.n);
-                } else if (e.data && e.data.type === 'request-state') {
-                    // presenter pyta current state, ignorujeme (my sme notes)
-                }
-            };
-            // Request initial state from presenter
-            syncChannel.postMessage({ type: 'request-state' });
+            try { syncChannel.postMessage(reqMsg); } catch(e) {}
         }
+        try { localStorage.setItem(SYNC_LS_KEY, JSON.stringify(reqMsg)); } catch(e) {}
 
         // Prepis updateNotesWindow aby update-ol lokalny DOM
         function updateNotesPanelLocal(n) {
@@ -3384,13 +3404,14 @@ Po Q&A — osobný kontakt pri východe.
     }
 
     // ===== PRESENTER ROLE - reaguj na request-state od notes okien =====
-    if (pageRole !== 'notes' && syncChannel) {
-        syncChannel.onmessage = (e) => {
-            if (e.data && e.data.type === 'request-state') {
+    if (pageRole !== 'notes') {
+        onSyncMessage((data) => {
+            console.log('[SYNC presenter] got:', data);
+            if (data && data.type === 'request-state') {
                 // Notes okno sa prave pripojilo, posli mu aktualny stav
-                syncChannel.postMessage({ type: 'slide', n: currentSlide, ts: Date.now() });
+                broadcastSlideChange(currentSlide);
             }
-        };
+        });
     }
 </script>
 
