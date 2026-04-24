@@ -418,42 +418,86 @@
         }
 
         /* 6. Exercise slides (orange full-bleed) */
+        /* Exercise slidy - Variant B: tmave pozadie + oranzovy nadpis + oranzova task box */
         .slide-exercise {
-            background: var(--orange);
+            background: linear-gradient(135deg, var(--dark) 0%, var(--surface-dark) 100%);
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .slide-exercise::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -15%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(247,122,16,0.2) 0%, transparent 60%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
         }
         .slide-exercise .slide-inner {
             color: white;
+            position: relative;
+            z-index: 1;
+        }
+        .slide-exercise .kicker {
+            color: var(--orange) !important;
+            font-weight: 500;
         }
         .slide-exercise h1 {
-            color: white;
+            color: var(--orange);
             font-size: var(--font-h1);
+            letter-spacing: -0.02em;
         }
         .slide-exercise h1::after { display: none; }
         .slide-exercise h2 {
-            color: white;
+            color: var(--orange);
         }
-        .slide-exercise h2::after { background: white; }
-        .slide-exercise p { color: white; }
+        .slide-exercise h2::after { background: var(--orange); }
+        .slide-exercise p { color: rgba(255,255,255,0.9); }
         .slide-exercise .timer-badge {
             position: absolute;
             top: 40px;
             right: 40px;
-            background: rgba(0,0,0,0.15);
-            padding: 12px 20px;
+            background: var(--orange);
+            padding: 12px 22px;
             border-radius: var(--chip-radius);
             font-weight: 500;
             font-size: 18px;
             color: white;
-            backdrop-filter: blur(8px);
+            box-shadow: 0 4px 16px rgba(247,122,16,0.35);
+            z-index: 2;
         }
         .slide-exercise .task-box {
-            background: rgba(255,255,255,0.15);
-            border: 1px solid rgba(255,255,255,0.25);
-            padding: 24px 32px;
+            background: var(--orange);
+            border: none;
+            padding: 28px 36px;
             border-radius: var(--card-radius);
             margin-top: 24px;
-            backdrop-filter: blur(8px);
+            color: white;
+            box-shadow: 0 8px 32px rgba(247,122,16,0.25);
+        }
+        .slide-exercise .task-box ul,
+        .slide-exercise .task-box ol,
+        .slide-exercise .task-box li,
+        .slide-exercise .task-box strong,
+        .slide-exercise .task-box em,
+        .slide-exercise .task-box h3 {
+            color: white !important;
+        }
+        .slide-exercise .task-box a {
+            color: white;
+            text-decoration: underline;
+        }
+        .slide-exercise .task-box .bullets.check li::before,
+        .slide-exercise .task-box .bullets.cross li::before {
+            color: white;
+            background: transparent;
+        }
+        .slide-exercise .task-box .bullets li::before {
+            background: white;
         }
 
         /* 7. End slide */
