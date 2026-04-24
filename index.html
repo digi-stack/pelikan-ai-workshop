@@ -69,18 +69,14 @@
             top: 0; left: 0;
             width: 100vw;
             height: 100vh;
-            display: flex;
+            display: none;
             align-items: safe center;
             justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.35s ease;
             padding: 60px 80px;
             overflow-y: auto;
         }
         .slide.active {
-            opacity: 1;
-            pointer-events: auto;
+            display: flex;
         }
         .slide-inner {
             max-width: 1000px;
@@ -3005,7 +3001,9 @@ Po Q&A — osobný kontakt pri východe.
         if (n > totalSlides) n = totalSlides;
 
         slides.forEach((slide, idx) => {
-            slide.classList.toggle('active', idx + 1 === n);
+            const isActive = idx + 1 === n;
+            slide.classList.toggle('active', isActive);
+            if (isActive) slide.scrollTop = 0;
         });
 
         currentSlide = n;
