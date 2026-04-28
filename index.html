@@ -69,14 +69,20 @@
             top: 0; left: 0;
             width: 100vw;
             height: 100vh;
-            display: none;
+            display: flex;
             align-items: safe center;
             justify-content: center;
             padding: 60px 80px;
             overflow-y: auto;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease, visibility 0s linear 0.35s;
         }
         .slide.active {
-            display: flex;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.35s ease, visibility 0s linear 0s;
+            z-index: 1;
         }
         .slide-inner {
             max-width: 1000px;
@@ -141,7 +147,6 @@
             background: linear-gradient(135deg, #FF9840 0%, var(--orange) 45%, #D96800 100%);
             color: white;
             text-align: center;
-            position: relative;
             overflow: hidden;
         }
         .slide-title::before {
@@ -255,7 +260,6 @@
             background: linear-gradient(135deg, var(--dark) 0%, var(--surface-dark) 100%);
             color: white;
             text-align: center;
-            position: relative;
             overflow: hidden;
         }
         .slide-section::before {
@@ -323,7 +327,6 @@
         .slide-divider {
             background: var(--dark);
             color: white;
-            position: relative;
             overflow: hidden;
         }
         .slide-divider::before {
@@ -418,7 +421,6 @@
         .slide-exercise {
             background: linear-gradient(135deg, var(--dark) 0%, var(--surface-dark) 100%);
             color: white;
-            position: relative;
             overflow: hidden;
         }
         .slide-exercise::before {
@@ -501,7 +503,6 @@
             background: linear-gradient(135deg, var(--dark) 0%, var(--surface-dark) 60%, #103024 100%);
             color: white;
             text-align: center;
-            position: relative;
             overflow: hidden;
         }
         .slide-end::before {
