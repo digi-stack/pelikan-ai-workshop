@@ -1536,9 +1536,20 @@ Počas pauzy:
                 <div class="card-body">NotebookLM, Gems, AI Studio - jeden login.</div>
             </div>
         </div>
+        <div style="margin-top: 28px; padding: 18px 22px; background: var(--orange-light); border-left: 4px solid var(--orange); border-radius: 0 8px 8px 0;">
+            <div class="kicker" style="color: var(--orange); margin-bottom: 6px;">Tip: Súkromný režim</div>
+            <div style="font-size: 16px;">Keď chceš použiť Gemini bez uloženia konverzácie do histórie, otvor <strong>Temporary chat / Incognito mode</strong> - ikona v Gemini hornom menu. Konverzácia sa neuloží, AI sa z nej nepoučí. Vhodné pre citlivé alebo experimentálne dotazy.</div>
+        </div>
     </div>
     <aside class="notes">
-PREČO GEMINI - 4 argumenty (2 min)
+PREČO GEMINI - 4 argumenty + tip (2 min)
+
+INCOGNITO TIP:
+- V Gemini je "Temporary chat" (ikona v hornom menu, vyzerá ako stopwatch / incognito)
+- Konverzácia sa neuloží do histórie
+- AI sa z nej nepoučí
+- Vhodné pre: brainstorming bez follow-up, citlivé veci, experimenty
+- POZOR: ani v incognito mode neposielaj klientske OÚ ak nemáš DPA pokryté (Pelikán Enterprise to má)
 
 Zmena oproti prvej verzii: NIE je "zadarmo" - platíte za Workspace.
 Gemini je VNORENÝ v Google ekosystéme, ktorý už používate.
@@ -2070,8 +2081,86 @@ Prechod na ďalší slajd:
     </aside>
 </div>
 
-<!-- SLIDE 25: Master prompt intro + Gem link -->
+<!-- SLIDE 25: Cheat sheet - 6 komponentov dobreho promptu (Jeff Su) -->
 <div class="slide slide-content" data-slide="25">
+    <div class="slide-inner wide">
+        <div class="kicker">Cheat sheet</div>
+        <h1>6 komponentov dobrého promptu.</h1>
+        <p style="margin-top: 8px; font-size: 16px; color: var(--text-secondary);">Keď nemáš master prompt po ruke - drž sa tejto štruktúry. Inšpirované Jeff Su (YouTube, productivity guru).</p>
+
+        <div style="margin-top: 24px; padding: 14px 20px; background: var(--orange-light); border-left: 4px solid var(--orange); border-radius: 0 8px 8px 0;">
+            <div class="kicker" style="color: var(--orange); margin-bottom: 4px;">Povinný</div>
+            <div style="font-size: 17px;"><strong>Úloha (Task)</strong> - začni akčným slovesom: napíš, analyzuj, vytvor, zhrň, navrhni. Bez tohto AI nevie, čo má robiť.</div>
+        </div>
+
+        <div class="cards-grid cols-2" style="margin-top: 16px; gap: 12px;">
+            <div class="card" style="padding: 14px 18px; border-left: 3px solid var(--green);">
+                <div class="card-kicker" style="color: var(--green);">Dôležité</div>
+                <div class="card-title" style="font-size: 15px; margin-bottom: 4px;">Kontext (Context)</div>
+                <div class="card-body" style="font-size: 13px;">Pozadie situácie, ako vyzerá úspech, v akom prostredí pracuješ.</div>
+            </div>
+            <div class="card" style="padding: 14px 18px; border-left: 3px solid var(--green);">
+                <div class="card-kicker" style="color: var(--green);">Dôležité</div>
+                <div class="card-title" style="font-size: 15px; margin-bottom: 4px;">Príklady (Exemplars)</div>
+                <div class="card-body" style="font-size: 13px;">Vzor, šablóna, ukážka. Aj jeden príklad výrazne zlepší výstup.</div>
+            </div>
+        </div>
+
+        <div class="cards-grid cols-3" style="margin-top: 12px; gap: 12px;">
+            <div class="card" style="padding: 12px 14px;">
+                <div class="card-kicker" style="font-size: 10px;">Doplnkový</div>
+                <div class="card-title" style="font-size: 14px;">Rola (Persona)</div>
+                <div class="card-body" style="font-size: 12px;">„Si skúsený CS manažér..."</div>
+            </div>
+            <div class="card" style="padding: 12px 14px;">
+                <div class="card-kicker" style="font-size: 10px;">Doplnkový</div>
+                <div class="card-title" style="font-size: 14px;">Forma (Format)</div>
+                <div class="card-body" style="font-size: 12px;">Email, tabuľka, zoznam.</div>
+            </div>
+            <div class="card" style="padding: 12px 14px;">
+                <div class="card-kicker" style="font-size: 10px;">Doplnkový</div>
+                <div class="card-title" style="font-size: 14px;">Tón (Tone)</div>
+                <div class="card-body" style="font-size: 12px;">Vecný, priateľský, formálny.</div>
+            </div>
+        </div>
+
+        <p style="margin-top: 18px; font-size: 14px; font-style: italic; color: var(--text-secondary); text-align: center;">Nie každý prompt potrebuje všetkých 6. Úloha je povinná, zvyšok pridávaj podľa toho, čo chceš zo seba dostať von.</p>
+    </div>
+    <aside class="notes">
+CHEAT SHEET - 6 KOMPONENTOV DOBRÉHO PROMPTU (3 min)
+
+Inšpirované: Jeff Su (YouTube, productivity guru) - 6-komponentová štruktúra.
+
+VYSVETLI HIERARCHIU:
+1. POVINNÝ (1): ÚLOHA - bez nej AI nevie, čo má robiť
+2. DÔLEŽITÉ (2): KONTEXT + PRÍKLADY - tu sa rozhoduje kvalita
+3. DOPLNKOVÉ (3): ROLA, FORMA, TÓN - finishing touch
+
+POUŽIJ PRÍKLAD ZLY VS DOBRY (z cestovného ruchu):
+
+ZLY PROMPT:
+"Napíš odpoveď klientovi, ktorý reklamuje hotel."
+
+DOBRY PROMPT:
+- ROLA: Si skúsený CS konzultant cestovnej kancelárie s 5 rokmi praxe.
+- KONTEXT: Klient reklamuje, že izba v hoteli na Mallorca nemala výhľad na more, ako bolo sľúbené v ponuke. Klient kúpil zájazd cez nás, výhľad si pridal ako extra (+50 €). Hotel potvrdil, že izba s morským výhľadom nebola voľná v deň príchodu, ale klient o tom nebol informovaný.
+- ÚLOHA: Navrhni odpoveď klientovi.
+- PRÍKLAD: V odpovedi spomeň empatiu, konkrétne riešenie (čiastočná refundácia 50 € + voucher 30 €), termín do kedy si môže vybrať.
+- FORMA: Email, max 150 slov.
+- TÓN: Empatický, vecný, bez korporátnych klišé.
+
+POUŽITIE:
+- Pre tých, čo nemajú master prompt po ruke
+- Aj v každej AI úlohe (nielen v Gemini, aj ChatGPT, Claude)
+- Cheat sheet sa dá vytlačiť, mať na stole
+
+PRECHOD na slide 26 (master prompt):
+"A keď chceš, aby si toto všetko nemusel písať každý raz - postavíme ti master prompt."
+    </aside>
+</div>
+
+<!-- SLIDE 26: Master prompt intro + Gem link -->
+<div class="slide slide-content" data-slide="26">
     <div class="slide-inner">
         <div class="kicker">Master prompt</div>
         <h1>Tvoj osobný AI profil za 30 minút.</h1>
@@ -2122,8 +2211,8 @@ ZDIEĽAM LINK V CHATE:
     </aside>
 </div>
 
-<!-- SLIDE 26: Cvičenie - postav si master prompt -->
-<div class="slide slide-exercise" data-slide="26">
+<!-- SLIDE 27: Cvičenie - postav si master prompt -->
+<div class="slide slide-exercise" data-slide="27">
     <div class="timer-badge">⏱ 30 min</div>
     <div class="slide-inner">
         <div class="kicker" style="color: rgba(255,255,255,0.8);">Cvičenie 1</div>
@@ -2163,8 +2252,8 @@ Ale ak máš super výstup - zdieľaj. Tak rastieme."
     </aside>
 </div>
 
-<!-- SLIDE 27: SECTION TRANSITION → NotebookLM -->
-<div class="slide slide-section" data-slide="27">
+<!-- SLIDE 28: SECTION TRANSITION → NotebookLM -->
+<div class="slide slide-section" data-slide="28">
     <div class="slide-inner">
         <div class="section-num">Research superpower</div>
         <h1>NotebookLM</h1>
@@ -2179,8 +2268,8 @@ Je to research asistent."
     </aside>
 </div>
 
-<!-- SLIDE 28: NotebookLM intro -->
-<div class="slide slide-statement" data-slide="28">
+<!-- SLIDE 29: NotebookLM intro -->
+<div class="slide slide-statement" data-slide="29">
     <div class="slide-inner">
         <div class="kicker" style="text-align: center;">NotebookLM</div>
         <p class="statement">Nie chat.<br><span class="accent">Research asistent, ktorý číta iba tvoje dokumenty.</span></p>
@@ -2218,8 +2307,8 @@ Limit free tier: 3 Audio Overview za deň
     </aside>
 </div>
 
-<!-- SLIDE 29: Silné stránky NotebookLM - vrátane Deep Research a Gem prepojenia -->
-<div class="slide slide-content" data-slide="29">
+<!-- SLIDE 30: Silné stránky NotebookLM - vrátane Deep Research a Gem prepojenia -->
+<div class="slide slide-content" data-slide="30">
     <div class="slide-inner">
         <div class="kicker">Silné stránky</div>
         <h1>Čo NotebookLM vie.</h1>
@@ -2256,8 +2345,8 @@ Pre Pelikán využitie:
     </aside>
 </div>
 
-<!-- SLIDE 30: Demo + Audio Overview MERGED -->
-<div class="slide slide-content" data-slide="30">
+<!-- SLIDE 31: Demo + Audio Overview MERGED -->
+<div class="slide slide-content" data-slide="31">
     <div class="slide-inner">
         <div class="kicker">Live demo</div>
         <h1>Dokument → chat + podcast.</h1>
@@ -2309,8 +2398,8 @@ a pustíš ho cestou domov. Za 3 minúty poznáš esenciu."
     </aside>
 </div>
 
-<!-- SLIDE 31: Use cases pre Pelikán -->
-<div class="slide slide-content" data-slide="31">
+<!-- SLIDE 32: Use cases pre Pelikán -->
+<div class="slide slide-content" data-slide="32">
     <div class="slide-inner">
         <div class="kicker">Use cases pre Pelikán</div>
         <h1>Kde to reálne použiješ.</h1>
@@ -2355,8 +2444,8 @@ a skús ho nahrať. Uvidíš rozdiel."
     </aside>
 </div>
 
-<!-- SLIDE 32: Cvičenie NotebookLM -->
-<div class="slide slide-exercise" data-slide="32">
+<!-- SLIDE 33: Cvičenie NotebookLM -->
+<div class="slide slide-exercise" data-slide="33">
     <div class="timer-badge">⏱ 10 min</div>
     <div class="slide-inner">
         <div class="kicker" style="color: rgba(255,255,255,0.8);">Cvičenie 2</div>
@@ -2393,8 +2482,8 @@ Ak niekto nemá svoj dokument:
     </aside>
 </div>
 
-<!-- SLIDE 33: PAUZA + BLOK C transition -->
-<div class="slide slide-section" data-slide="33">
+<!-- SLIDE 34: PAUZA + BLOK C transition -->
+<div class="slide slide-section" data-slide="34">
     <div class="slide-inner">
         <div class="section-num">Pauza · 10 min · potom Blok C</div>
         <h1>Gems, AI Act<br>a bonus nástroje</h1>
@@ -2423,8 +2512,8 @@ Počas pauzy:
     </aside>
 </div>
 
-<!-- SLIDE 34: Master prompt → Gem (MERGED 30+31) -->
-<div class="slide slide-content" data-slide="34">
+<!-- SLIDE 35: Master prompt → Gem (MERGED 30+31) -->
+<div class="slide slide-content" data-slide="35">
     <div class="slide-inner">
         <div class="kicker">Od master promptu k Gem</div>
         <h1>Gem = master prompt + úloha + knowledge.</h1>
@@ -2492,8 +2581,8 @@ Ak by bolo potrebné vysvetliť technicky:
     </aside>
 </div>
 
-<!-- SLIDE 35: Gems príklady + bezpečnosť (NOVÝ) -->
-<div class="slide slide-content" data-slide="35">
+<!-- SLIDE 36: Gems príklady + bezpečnosť (NOVÝ) -->
+<div class="slide slide-content" data-slide="36">
     <div class="slide-inner wide">
         <div class="kicker">Gems - čo už existuje a čo si postavíš</div>
         <h1>Prehľad premade Gems a inšpirácia pre vlastné.</h1>
@@ -2584,8 +2673,8 @@ Prechod: "Teraz ideme stavať tvoj vlastný Gem."
     </aside>
 </div>
 
-<!-- SLIDE 36: Cvičenie - Gem pre môj problém -->
-<div class="slide slide-exercise" data-slide="36">
+<!-- SLIDE 37: Cvičenie - Gem pre môj problém -->
+<div class="slide slide-exercise" data-slide="37">
     <div class="timer-badge">⏱ 15 min</div>
     <div class="slide-inner">
         <div class="kicker" style="color: rgba(255,255,255,0.8);">Cvičenie 3</div>
@@ -2634,8 +2723,8 @@ Po cvičení → slide 32 (prezenčka)
     </aside>
 </div>
 
-<!-- SLIDE 37: Prezenčka - preformulované -->
-<div class="slide slide-content" data-slide="37">
+<!-- SLIDE 38: Prezenčka - preformulované -->
+<div class="slide slide-content" data-slide="38">
     <div class="slide-inner">
         <div class="kicker">AI Act compliance</div>
         <h1>Prezenčku vyplníš online.</h1>
@@ -2678,8 +2767,8 @@ do týždňa. Inak sme Pelikánu nepreukázali,
     </aside>
 </div>
 
-<!-- SLIDE 38: Bonus divider - prehľad ďalších AI -->
-<div class="slide slide-content" data-slide="38">
+<!-- SLIDE 39: Bonus divider - prehľad ďalších AI -->
+<div class="slide slide-content" data-slide="39">
     <div class="slide-inner" style="text-align: center;">
         <div class="kicker">Bonus</div>
         <h1>Prehľad ďalších<br>AI nástrojov.</h1>
@@ -2697,8 +2786,8 @@ Rýchly prechod, 30 sek a ideš ďalej.
     </aside>
 </div>
 
-<!-- SLIDE 39: Voice input -->
-<div class="slide slide-content" data-slide="39">
+<!-- SLIDE 40: Voice input -->
+<div class="slide slide-content" data-slide="40">
     <div class="slide-inner">
         <div class="kicker">Bonus 1</div>
         <h1>Hlasový vstup = 3× rýchlejšie.</h1>
@@ -2750,8 +2839,8 @@ Pointa:
     </aside>
 </div>
 
-<!-- SLIDE 40: Claude + Perplexity + AI Studio - bez červeného textu -->
-<div class="slide slide-content" data-slide="40">
+<!-- SLIDE 41: Claude + Perplexity + AI Studio - bez červeného textu -->
+<div class="slide slide-content" data-slide="41">
     <div class="slide-inner">
         <div class="kicker">Bonus 2</div>
         <h1>Ešte 3 nástroje, o ktorých vieš.</h1>
@@ -2798,8 +2887,8 @@ ZMENA Z V1:
     </aside>
 </div>
 
-<!-- SLIDE 41: Nano Banana + Veo + ElevenLabs / HeyGen -->
-<div class="slide slide-content" data-slide="41">
+<!-- SLIDE 42: Nano Banana + Veo + ElevenLabs / HeyGen -->
+<div class="slide slide-content" data-slide="42">
     <div class="slide-inner">
         <div class="kicker">Bonus 3 - vyskúšaj free account</div>
         <h1>Obrázky, video, hlas a avatar.</h1>
@@ -2836,8 +2925,8 @@ kliknite na Gemini, tam sa dostanete. Pre dnes stačí vedieť,
     </aside>
 </div>
 
-<!-- SLIDE 42: Claude Code vs. Desktop - bez "pre vás nie" -->
-<div class="slide slide-content" data-slide="42">
+<!-- SLIDE 43: Claude Code vs. Desktop - bez "pre vás nie" -->
+<div class="slide slide-content" data-slide="43">
     <div class="slide-inner">
         <div class="kicker">Pre zvedavých - kedy Claude Code namiesto Desktop</div>
         <h1>Čo používam ja.</h1>
@@ -2899,8 +2988,8 @@ stačí Gemini."
     </aside>
 </div>
 
-<!-- SLIDE 43: Zdroje, ktoré sledujem -->
-<div class="slide slide-content" data-slide="43">
+<!-- SLIDE 44: Zdroje, ktoré sledujem -->
+<div class="slide slide-content" data-slide="44">
     <div class="slide-inner">
         <div class="kicker">Reading list - ak chceš držať krok</div>
         <h1>Zdroje, ktoré sledujem.</h1>
@@ -2939,8 +3028,8 @@ Nemusíte sledovať všetko - títo vyberú to najlepšie."
     </aside>
 </div>
 
-<!-- SLIDE 44: Q&A + Ďakujem (orange-gradient štýl ako slide 1) -->
-<div class="slide slide-title" data-slide="44">
+<!-- SLIDE 45: Q&A + Ďakujem (orange-gradient štýl ako slide 1) -->
+<div class="slide slide-title" data-slide="45">
     <div class="slide-inner">
         <h1><span class="accent">Q&amp;A</span></h1>
         <p class="tagline"><em>Pýtaj sa.</em><br>Akákoľvek téma z workshopu.</p>
@@ -2978,12 +3067,12 @@ Po Q&A - osobný kontakt pri východe.
 <!-- ============ NAVIGATION ============ -->
 
 <div class="progress-bar">
-    <div class="progress-bar-fill" id="progress-fill" style="width: 2.5%;"></div>
+    <div class="progress-bar-fill" id="progress-fill" style="width: 2.2%;"></div>
 </div>
 
 <div class="nav-controls">
     <button class="nav-btn" id="prev-btn" onclick="prevSlide()" title="Predošlý (←)">‹</button>
-    <div class="slide-counter" id="slide-counter">1 / 44</div>
+    <div class="slide-counter" id="slide-counter">1 / 45</div>
     <button class="nav-btn" id="next-btn" onclick="nextSlide()" title="Ďalší (→)">›</button>
     <button class="nav-btn" onclick="openNotesWindow()" title="Speaker notes popup (N)" style="font-size: 13px; font-weight: 500;">📝</button>
     <button class="nav-btn" onclick="openSyncedNotesWindow()" title="Speaker notes v druhom okne pre dual-monitor (S)" style="font-size: 13px; font-weight: 500;">🖥️</button>
