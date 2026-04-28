@@ -1514,13 +1514,15 @@ Tip: zapni timer hlasne - disciplína + zábava
 <div class="slide slide-section" data-slide="13">
     <div class="slide-inner">
         <div class="section-num">Pauza · 10 min · potom Blok B</div>
-        <h1>Gemini, Master prompt<br>a NotebookLM.</h1>
-        <p>Hlavná praktická časť. Postavíš si svojho asistenta<br>a naučíš ho pamätať si.</p>
+        <h1>Riziká, AI Act<br>a kedy AI nepoužívať.</h1>
+        <p>Aby si vedel, čo s AI smieš a čo nie.</p>
         <div class="section-topics">
             <div class="topic-chip">Prečo Gemini</div>
-            <div class="topic-chip">Personalizácia</div>
-            <div class="topic-chip">Master prompt</div>
-            <div class="topic-chip">NotebookLM</div>
+            <div class="topic-chip">Kedy aký model</div>
+            <div class="topic-chip">Riziká AI</div>
+            <div class="topic-chip">Mentálny filter</div>
+            <div class="topic-chip">AI Act</div>
+            <div class="topic-chip">Kedy AI nepoužívať</div>
         </div>
     </div>
     <aside class="notes">
@@ -1540,68 +1542,80 @@ Počas pauzy:
 
 <!-- SLIDE 14: Prečo Gemini -->
 <div class="slide slide-content" data-slide="14">
-    <div class="slide-inner">
+    <div class="slide-inner wide">
         <div class="kicker">Prečo Gemini a nie ChatGPT</div>
         <h1>4 dôvody pre Pelikán.</h1>
-        <div class="cards-grid cols-4" style="margin-top: 32px;">
+        <div class="cards-grid cols-4" style="margin-top: 28px;">
             <div class="card">
                 <div class="card-kicker">Ekosystém</div>
-                <div class="card-title">Vnorené v Google</div>
-                <div class="card-body">Nie zadarmo - ale súčasť Workspace, ktorý používaš denne.</div>
+                <div class="card-title">Súčasť Google Workspace</div>
+                <div class="card-body">Používaš ho denne s ostatnými nástrojmi v rámci Google účtu.</div>
             </div>
             <div class="card">
                 <div class="card-kicker">Bezpečnosť</div>
-                <div class="card-title">Dáta sa netrénujú</div>
-                <div class="card-body">Enterprise verzia - dáta ostávajú v Googli.</div>
+                <div class="card-title">Na dátach Gemini netrénuje</div>
+                <div class="card-body">Vďaka Workspace (enterprise) sa naše prompty nepoužívajú na tréning. Vieme si nastaviť, ako dlho sa konverzácie uchovávajú (18 mesiacov až 4 roky). Pelikán má 3 roky.</div>
             </div>
             <div class="card">
                 <div class="card-kicker">Compliance</div>
-                <div class="card-title">DPA hotová</div>
-                <div class="card-body">Máme s Googlom podpísané. GDPR OK.</div>
+                <div class="card-title">DPA s Googlom podpísaná</div>
+                <div class="card-body">Zmluva o spracúvaní osobných údajov (DPA) je hotová. GDPR čl. 28 vyriešený.</div>
             </div>
             <div class="card">
                 <div class="card-kicker">Efektivita</div>
-                <div class="card-title">Vidí Drive + Gmail</div>
-                <div class="card-body">NotebookLM, Gems, AI Studio - jeden login.</div>
+                <div class="card-title">Všetko na jednej platforme</div>
+                <div class="card-body">Ekonomickejšie aj efektívnejšie - jeden login pre Gemini, NotebookLM, Gems, AI Studio.</div>
             </div>
         </div>
-        <div style="margin-top: 28px; padding: 18px 22px; background: var(--orange-light); border-left: 4px solid var(--orange); border-radius: 0 8px 8px 0;">
-            <div class="kicker" style="color: var(--orange); margin-bottom: 6px;">Tip: Súkromný režim</div>
-            <div style="font-size: 16px;">Keď chceš použiť Gemini bez uloženia konverzácie do histórie, otvor <strong>Temporary chat / Incognito mode</strong> - ikona v Gemini hornom menu. Konverzácia sa neuloží, AI sa z nej nepoučí. Vhodné pre citlivé alebo experimentálne dotazy.</div>
+        <div style="margin-top: 24px; padding: 16px 22px; background: var(--dark); color: white; border-radius: var(--card-radius); font-size: 14px;">
+            <strong style="color: var(--orange);">⚠ Free Gemini cez @gmail.com tieto pravidlá NEMÁ.</strong> Tam sa konverzácie môžu používať na tréning a môžu ich vidieť aj reviewers. Pre Pelikán dáta používaj len Workspace login.
+        </div>
+        <div style="margin-top: 16px; padding: 14px 22px; background: var(--orange-light); border-left: 4px solid var(--orange); border-radius: 0 8px 8px 0;">
+            <div class="kicker" style="color: var(--orange); margin-bottom: 4px;">Tip: Inkognito mód</div>
+            <div style="font-size: 15px;">Keď chceš použiť Gemini bez uloženia konverzácie do histórie, otvor <strong>Temporary chat (Inkognito mód)</strong> - ikona v Gemini hornom menu. Vhodné pre citlivé alebo experimentálne dotazy.</div>
         </div>
     </div>
     <aside class="notes">
-PREČO GEMINI - 4 argumenty + tip (2 min)
+GEMINI A PELIKÁN WORKSPACE (3 min)
 
-INCOGNITO TIP:
-- V Gemini je "Temporary chat" (ikona v hornom menu, vyzerá ako stopwatch / incognito)
-- Konverzácia sa neuloží do histórie
-- AI sa z nej nepoučí
-- Vhodné pre: brainstorming bez follow-up, citlivé veci, experimenty
-- POZOR: ani v incognito mode neposielaj klientske OÚ ak nemáš DPA pokryté (Pelikán Enterprise to má)
-
-Zmena oproti prvej verzii: NIE je "zadarmo" - platíte za Workspace.
-Gemini je VNORENÝ v Google ekosystéme, ktorý už používate.
+4 ARGUMENTY:
 
 1. EKOSYSTÉM:
-   - Nie je to samostatný nástroj, ale súčasť Workspace
-   - Rovnaké prihlasovanie, rovnaké dáta, rovnaký UI
+   - Súčasť Google Workspace, ktorý už používate
+   - Rovnaké prihlasovanie, rovnaké dáta, rovnaký UI ako Gmail/Drive
+   - Žiadny ďalší účet, žiadny ďalší login
 
 2. BEZPEČNOSŤ:
-   - Enterprise tier - dáta sa nepoužívajú na tréning
-   - Dôležité pre klientske dáta (GDPR)
+   - Tým, že máme Workspace (enterprise riešenie), na našich dátach Gemini netrénuje
+   - Citát z Google FAQ: „Submissions aren't used to train models and are never reviewed by humans"
+   - Žiadny ľudský reviewer nevidí naše prompty
+   - Vieme si nastaviť, ako dlho sa konverzácie uchovávajú: 18 mesiacov až 4 roky
+   - Pelikán má aktuálne nastavenú retenciu na 3 roky
 
 3. COMPLIANCE:
-   - Google DPA podpísaná - máme to pokryté
-   - Ak by ste použili osobný ChatGPT, porušujete GDPR
+   - Google DPA (Cloud Data Processing Addendum) je podpísaná
+   - GDPR čl. 28 (sprostredkovanie spracúvania) vyriešený automaticky
+   - Ak by ste použili osobný ChatGPT cez @gmail.com, porušujete GDPR
 
 4. EFEKTIVITA:
+   - Všetko v jednej platforme - Gemini, NotebookLM, Gems, AI Studio
+   - Jeden login, jedno fakturovanie, jedna sada pravidiel
    - Gemini vidí Gmail, Drive, Docs - ChatGPT nie
-   - To znamená: "Zhrň mi email od klienta X" - Gemini to vie, ChatGPT nie
+
+INKOGNITO MÓD:
+- Temporary chat (ikona v Gemini hornom menu)
+- Konverzácia sa neuloží do histórie
+- Vhodné pre brainstorming bez follow-up, citlivé veci, experimenty
+- POZOR: ani v inkognito móde neposielaj klientske OÚ ak nemáš DPA pokryté (Pelikán Workspace to má, free gmail nie)
 
 KĽÚČOVÁ POINTA:
-"Pelikán platí za Workspace. V tom je Gemini.
-Nepotrebujeme druhý nástroj."
+„Pelikán platí za Workspace. V tom je Gemini. Nepotrebujeme druhý nástroj.
+Free verzia cez @gmail.com = právne to isté ako billboard."
+
+ZDROJE:
+- Privacy Hub: knowledge.workspace.google.com/admin/gemini/generative-ai-in-google-workspace-privacy-hub
+- FAQ: knowledge.workspace.google.com/admin/gemini/gemini-for-google-workspace-faq
+- CDPA: cloud.google.com/terms/data-processing-addendum/
     </aside>
 </div>
 
@@ -1798,7 +1812,7 @@ Ak sa spýtajú "môžem používať ChatGPT doma":
 <div class="slide slide-content" data-slide="18">
     <div class="slide-inner">
         <div class="kicker">Riziká AI</div>
-        <h1>4 veci, na ktoré dávaj pozor.</h1>
+        <h1>Na čo si dať pozor?</h1>
         <div class="cards-grid cols-2" style="margin-top: 24px;">
             <div class="card" style="border-left: 4px solid var(--red);">
                 <div class="card-kicker" style="color: var(--red);">Halucinácie</div>
@@ -1811,14 +1825,14 @@ Ak sa spýtajú "môžem používať ChatGPT doma":
                 <div class="card-body">Najmä pri HR rozhodnutiach a hodnoteniach.</div>
             </div>
             <div class="card" style="border-left: 4px solid var(--red);">
-                <div class="card-kicker" style="color: var(--red);">GDPR</div>
-                <div class="card-title">Citlivé dáta</div>
-                <div class="card-body">Rodné čísla, zdravotný stav, platby - NIE.</div>
+                <div class="card-kicker" style="color: var(--red);">Citlivé a osobné dáta</div>
+                <div class="card-title">Čo nedávať do AI</div>
+                <div class="card-body">Rodné čísla, zdravotný stav, sken OP/pasu, firemné tajomstvá.</div>
             </div>
             <div class="card" style="border-left: 4px solid var(--red);">
-                <div class="card-kicker" style="color: var(--red);">Human in the loop</div>
+                <div class="card-kicker" style="color: var(--red);">Human in the Loop</div>
                 <div class="card-title">Vždy validuj výstupy</div>
-                <div class="card-body">Každý výstup prečítaj pred odoslaním. Ty si finálna kontrola.</div>
+                <div class="card-body">Každý výstup si pred odoslaním prečítaj.</div>
             </div>
         </div>
     </div>
@@ -1856,9 +1870,9 @@ Ak sa spýtajú "ako poznám halucináciu":
                 <blockquote style="margin: 0; font-size: 18px;">
                     Predstav si, že prompt, ktorý ideš poslať AI, uvidíš zajtra ráno na billboarde pri D1. Mená klientov? Kontrakty? Cestovné doklady, lekárske správy?
                 </blockquote>
-                <p style="margin-top: 16px; font-size: 17px;">Ak ti to dvíha tlak - <strong>nepatrí to do free verzie.</strong></p>
+                <p style="margin-top: 16px; font-size: 17px;">Ak ti v hlave zasvieti stopka 🛑 - <strong>nepatrí to do free verzie.</strong></p>
                 <div style="margin-top: 20px; padding: 14px 18px; background: var(--orange-light); border-left: 4px solid var(--orange); border-radius: 0 8px 8px 0;">
-                    <strong style="color: var(--orange);">Pointa:</strong> Free ChatGPT cez @gmail.com = právne to isté ako billboard.
+                    <strong style="color: var(--orange);">Pointa:</strong> Free ChatGPT účet (napr. cez @gmail.com) je právne to isté ako billboard.
                 </div>
             </div>
         </div>
@@ -1888,107 +1902,87 @@ PREP NA ĎALŠÍ SLAJD:
     </aside>
 </div>
 
-<!-- SLIDE 20: Gemini vo Workspace - co to pre vas znamena -->
+<!-- SLIDE 20: AI Act pre zamestnanca -->
 <div class="slide slide-content" data-slide="20">
-    <div class="slide-inner wide">
-        <div class="kicker">Gemini cez Pelikán Workspace</div>
-        <h1>Tri pravidlá, ktoré platia pre vás.</h1>
-        <div class="cards-grid cols-3" style="margin-top: 32px;">
-            <div class="card" style="border-left: 4px solid var(--green);">
-                <div class="card-kicker" style="color: var(--green);">DPA pokryté</div>
-                <div class="card-title">Tvoje prompty = customer data</div>
-                <div class="card-body">Gemini vo Workspace je súčasť <strong>Cloud Data Processing Addendum (CDPA)</strong>, ktorý Pelikán s Googlom má. GDPR čl. 28 vyriešený.</div>
-            </div>
-            <div class="card" style="border-left: 4px solid var(--green);">
-                <div class="card-kicker" style="color: var(--green);">Bez tréningu</div>
-                <div class="card-title">Submissions sa nepoužívajú</div>
-                <div class="card-body">Google: <em>„Submissions aren't used to train models and are never reviewed by humans."</em> Žiadny človek tvoje prompty nečíta.</div>
-            </div>
-            <div class="card" style="border-left: 4px solid var(--green);">
-                <div class="card-kicker" style="color: var(--green);">Retencia</div>
-                <div class="card-title">Admin nastaví, vy ovládate</div>
-                <div class="card-body">Voľby: <strong>3 mesiace / 18 mesiacov / 3 roky</strong> alebo bez histórie (72h technical hold).</div>
-            </div>
-        </div>
-        <div style="margin-top: 32px; padding: 16px 22px; background: var(--dark); color: white; border-radius: var(--card-radius); font-size: 14px;">
-            <strong style="color: var(--orange);">⚠ Free Gemini cez @gmail.com tieto pravidlá NEMÁ.</strong> Tam sa konverzácie môžu používať na tréning a môžu ich vidieť aj reviewers. Pre Pelikán dáta používaj len Workspace login.
-        </div>
-        <p style="margin-top: 16px; font-size: 13px; color: var(--text-secondary); text-align: center;">Aktuálne nastavenie retencie pre Pelikán pošle admin. <a href="https://knowledge.workspace.google.com/admin/gemini/manage-gemini-in-workspace-conversation-history-settings" target="_blank" style="color: var(--orange);">Google docs - retencia Gemini</a></p>
-    </div>
-    <aside class="notes">
-GEMINI WORKSPACE FAKTY (2 min)
-
-PELIKÁN MÁ:
-- Business Starter aj Standard predplatné (zmiešaný setup)
-- Lenka potvrdila, že Gemini majú všetci zamestnanci
-- Pravidlá nižšie platia pre obidva tieny rovnako
-
-3 KĽÚČOVÉ ROZDIELY OPROTI FREE:
-
-1. DPA POKRYTÉ:
-- Cloud Data Processing Addendum (CDPA)
-- Vaše prompty sú „customer data"
-- Pelikán má túto zmluvu už podpísanú s Googlom
-- GDPR čl. 28 vyriešený automaticky
-
-2. BEZ TRÉNINGU:
-- Citát z Google FAQ: „Submissions aren't used to train models and are never reviewed by humans"
-- Žiadny ľudský reviewer nevidí vaše prompty
-- AI sa z nich neučí
-- Toto je opačne pri free Gemini cez @gmail.com - tam môže
-
-3. RETENCIA:
-- Admin v Pelikán Google admin console nastaví retenciu
-- Voľby: 3M / 18M / 3R / OFF (default 18M)
-- Keď je OFF, držia 72h technical hold a potom mažú
-- Ja pošlem Patrikovi (alebo IT) link na retenciu, on zistí aktuálny stav
-
-LINK PRE ADMINA NA OVERENIE:
-https://knowledge.workspace.google.com/admin/gemini/manage-gemini-in-workspace-conversation-history-settings
-
-POINTA:
-„Workspace = bezpečný kanál. Free verzia = billboard. Voľba je vaša."
-
-ZDROJE:
-- Privacy Hub: knowledge.workspace.google.com/admin/gemini/generative-ai-in-google-workspace-privacy-hub
-- FAQ: knowledge.workspace.google.com/admin/gemini/gemini-for-google-workspace-faq
-- CDPA: cloud.google.com/terms/data-processing-addendum/
-    </aside>
-</div>
-
-<!-- SLIDE 21: AI Act pre zamestnanca -->
-<div class="slide slide-content" data-slide="21">
     <div class="slide-inner">
         <div class="kicker">AI Act pre zamestnanca</div>
         <h1>5 vecí z AI Actu, ktoré ti pomôžu v práci.</h1>
         <ul class="bullets" style="margin-top: 24px;">
             <li><strong>AI literacy</strong> (čl. 4) - preto si dnes tu.</li>
-            <li><strong>Používaj AI iba na to, na čo ju Pelikán schválil</strong> (tzv. intended purpose).</li>
+            <li><strong>Používaj len schválené nástroje cez firemné účty.</strong> Nie osobné ChatGPT, Claude, Copilot. Pred použitím nového nástroja sa spýtaj.</li>
             <li><strong>Nespoliehaj sa slepo</strong> na výstup - zodpovednosť nesieš ty a Pelikán, nie Google.</li>
             <li><strong>Povinná ľudská kontrola</strong> pri výstupe pre klienta, HR rozhodnutiach, cenách.</li>
-            <li><strong>Deployer vs. provider:</strong> Google ručí za model, <u>Pelikán ručí za to, ako ho použijeme</u>.</li>
+            <li><strong>Provider vs. deployer:</strong> Google (provider) ručí za model, <u>Pelikán (deployer) ručí za to, ako ho použijeme</u>.</li>
         </ul>
         <div style="margin-top: 32px; padding: 20px; background: var(--green-light); border-left: 4px solid var(--green); border-radius: 0 var(--card-radius) var(--card-radius) 0;">
             <p style="margin: 0; font-weight: 500;">Tento workshop = 2 v 1. Produktivita + compliance (AI Act literacy).</p>
         </div>
     </div>
     <aside class="notes">
-AI ACT - 5 povinností (2 min)
+AI ACT - 5 povinností pre zamestnanca (3 min)
 
 Účinnosť AI Act: 2. február 2025 (literacy článok 4)
 Plná účinnosť: 2. august 2026
 
-Pre zamestnanca TOP 5:
-1. AI literacy - vedieť, ako AI funguje, limity, riziká
-2. Intended purpose - používať na to, na čo to firma schválila
-3. Human oversight - vždy človek ako finálna kontrola
-4. Kritické výstupy - klientske, HR, ceny = povinný overview
-5. Deployer vs. provider:
-   - Google (provider) = ručí za model
-   - Pelikán (deployer) = ručí za ako to používa
+BOD 1 - AI LITERACY (čl. 4 AI Act):
+- Čo to je: poskytovateľ aj deployer (Pelikán) musia zabezpečiť, že personál má dostatočnú úroveň AI gramotnosti vzhľadom na kontext, v ktorom sa AI používa.
+- Z pohľadu zamestnanca to znamená:
+  * vedieť, ako AI funguje (predpovedací stroj, hádanie slov)
+  * poznať jej limity (halucinácie, bias, GDPR)
+  * vedieť, kedy AI áno a kedy nie
+  * vedieť rozpoznať chybný výstup pred odoslaním klientovi
+- Tento workshop = oficiálny dôkaz AI literacy pre každého z vás. Prezenčka je povinná.
+
+BOD 2 - SCHVÁLENÉ NÁSTROJE CEZ FIREMNÉ ÚČTY:
+Pelikán schválil zatiaľ tieto nástroje (overiť aktuálny stav):
+1. Gemini cez firemné Google Workspace
+2. Google ekosystém celkovo (NotebookLM, Gems, AI Studio cez Workspace login)
+3. ChatGPT platený účet pre Sky tím
+4. Jamie AI na prepis hovorov
+5. Claude pre technických užívateľov
+
+NESCHVÁLENÉ:
+- Osobné ChatGPT cez @gmail.com
+- Claude cez súkromný účet
+- Copilot cez súkromný Microsoft účet
+- Akýkoľvek nový AI nástroj bez schválenia
+
+PRAVIDLO:
+- Pred použitím nového AI nástroja sa spýtaj IT alebo svojho šéfa
+- Ak nevieš, nepoužívaj to
+- Použitie neschváleného nástroja s klientskymi dátami = porušenie GDPR aj AI Act
+
+PREČO TÁTO PRAVIDLO:
+- Pelikán je deployer (čl. 4 AI Act)
+- Schválené nástroje majú DPA (sprostredkovateľská zmluva)
+- Ak unikne klientske údaj cez neschválený nástroj:
+  * Porušenie GDPR čl. 5 (zákonnosť spracúvania)
+  * Porušenie čl. 32 (bezpečnosť spracúvania)
+  * Porušenie AI Act čl. 4 (AI literacy)
+
+BOD 3 - NESPOLIEHAJ SA SLEPO:
+- Zodpovednosť za výstup nesieš ty a Pelikán, nie Google
+- AI ako pomocník, nie autorita
+- Vždy si výstup prečítaj pred odoslaním
+
+BOD 4 - POVINNÁ ĽUDSKÁ KONTROLA:
+Tam, kde AI ovplyvňuje:
+- Výstup klientovi (odpoveď, ponuka, reklamácia)
+- HR rozhodnutia (nábor, hodnotenie)
+- Ceny a kompenzácie
+= POVINNÁ ľudská kontrola pred odoslaním.
+
+BOD 5 - PROVIDER VS. DEPLOYER:
+- Google = provider modelu Gemini
+  * ručí za to, ako model funguje (halucinácie, bias technicky)
+  * ručí za bezpečnosť dát na svojej infraštruktúre
+- Pelikán = deployer (sprostredkovateľ použitia)
+  * ručí za to, ako Gemini POUŽÍVAME
+  * za výstupy, ktoré odošleme klientovi
+  * za to, či sa zamestnanec nezmysle nespolieha na halucinovanú odpoveď
 
 KĽÚČOVÁ POINTA:
-"Tento workshop = oficiálny dôkaz AI literacy pre každého z vás.
+„Tento workshop = oficiálny dôkaz AI literacy pre každého z vás.
 Dostanete prezenčku - povinná."
 
 Sankcie: až 35M EUR alebo 7% globálneho obratu (pre najzávažnejšie)
@@ -1996,8 +1990,8 @@ Pre deployerov najčastejšie: 15M EUR alebo 3% obratu.
     </aside>
 </div>
 
-<!-- SLIDE 22: AI potrebuje kontext - Markdown (NOVÝ) -->
-<div class="slide slide-content" data-slide="22">
+<!-- SLIDE 21: AI potrebuje kontext - Markdown (NOVÝ) -->
+<div class="slide slide-content" data-slide="21">
     <div class="slide-inner">
         <div class="kicker">Prečo je kontext všetko</div>
         <h1>AI potrebuje kontext. Daj jej ho.</h1>
@@ -2090,18 +2084,17 @@ jednu extrémne dôležitú vec - PERSONALIZÁCIU."
     </aside>
 </div>
 
-<!-- SLIDE 23: Čo NEPOUŽÍVAŤ s AI -->
-<div class="slide slide-content" data-slide="23">
+<!-- SLIDE 22: Čo NEPOUŽÍVAŤ s AI -->
+<div class="slide slide-content" data-slide="22">
     <div class="slide-inner">
-        <div class="kicker">Červené vlajky</div>
+        <div class="kicker">Pravidlá</div>
         <h1>Kedy AI <span style="color: var(--red);">NEpoužívať</span>.</h1>
         <ul class="bullets cross" style="margin-top: 24px;">
-            <li>Citlivé osobné dáta (rodné čísla, zdravotný stav, platobné karty)</li>
+            <li>Citlivé osobné údaje (rodné čísla, zdravotný stav, sken OP/pasu, platobné karty)</li>
             <li>Právne záväzné výstupy bez právnej kontroly</li>
-            <li>Emocionálna krízová komunikácia (úmrtie, vážna reklamácia)</li>
-            <li>Overené fakty, ktoré AI často halucinuje (ceny, termíny, mená)</li>
-            <li>Jedinečný neopakovateľný kontext bez vzoru</li>
-            <li>Presné výpočty a počítanie (AI v tom zlyháva)</li>
+            <li>Emocionálna a krízová komunikácia (úmrtie, vážna reklamácia) - áno, môžem, ale len po anonymizácii alebo pseudonymizácii</li>
+            <li>Overené fakty, ktoré AI často halucinuje (ceny, termíny, mená) - na to je lepší NotebookLM, nie Gemini</li>
+            <li>Presné výpočty a počítanie - AI v tom nie je dobrá</li>
         </ul>
     </div>
     <aside class="notes">
@@ -2122,12 +2115,12 @@ Tento slajd je vedome dôležitý pre AI Act compliance.
     </aside>
 </div>
 
-<!-- SLIDE 24: SECTION TRANSITION → Personalizácia + Master prompt -->
-<div class="slide slide-section" data-slide="24">
+<!-- SLIDE 23: SECTION TRANSITION → Personalizácia + Master prompt -->
+<div class="slide slide-section" data-slide="23">
     <div class="slide-inner">
-        <div class="section-num">Teraz ideme stavať</div>
+        <div class="section-num">Let's play</div>
         <h1>Personalizácia<br>a master prompt</h1>
-        <p>Cvičenie 1: vlastný AI asistent za 30 minút.<br>Tvoje AI, tvoj štýl, tvoja rola.</p>
+        <p>Cvičenie 1: tvoj kustomizovaný asistent za 30 minút.<br>Tvoj štýl a tvoja rola.</p>
     </div>
     <aside class="notes">
 TRANSITION - ideme stavať (15 sek)
@@ -2141,11 +2134,11 @@ Rýchly prechod - publikum sa teší na prax.
     </aside>
 </div>
 
-<!-- SLIDE 25: Personalizácia - čo to je -->
-<div class="slide slide-statement" data-slide="25">
+<!-- SLIDE 24: Personalizácia - čo to je -->
+<div class="slide slide-statement" data-slide="24">
     <div class="slide-inner">
         <div class="kicker" style="text-align: center;">Personalizácia</div>
-        <p class="statement">Nie <em>čo</em> má AI robiť.<br><span class="accent">Ale <em>kým</em> má byť voči tebe.</span></p>
+        <p class="statement">Nie <em>čo</em> má AI robiť.<br><span class="accent">Ale <em>kým</em> má byť?</span></p>
         <div class="oscillation" style="margin-top: 48px;">
             <div class="osc-side osc-before">
                 <div class="osc-label">Bez personalizácie</div>
@@ -2180,13 +2173,13 @@ Toto je najsilnejší "aha moment" workshopu.
     </aside>
 </div>
 
-<!-- SLIDE 26: Príklad personalizácie pre CS agentku -->
-<div class="slide slide-content" data-slide="26">
+<!-- SLIDE 25: Príklad personalizácie pre CS agentku -->
+<div class="slide slide-content" data-slide="25">
     <div class="slide-inner">
-        <div class="kicker">Príklad personalizácie - CS agentka Pelikánu</div>
+        <div class="kicker">Príklad personalizácie - cestovná konzultantka Pelikánu</div>
         <h2>8 viet, ktoré zmenia tvoju AI.</h2>
         <blockquote style="font-size: 18px; margin-top: 20px;">
-            „Správaj sa ako môj skúsený kolega z CS, ktorý má za sebou 5 rokov riešenia reklamácií v cestovke.
+            „Správaj sa ako môj skúsený kolega zo zákazníckeho servisu, ktorý má za sebou 5 rokov riešenia reklamácií v cestovke.
             Denne spracúvam 40-60 dopytov a na každý mám 3-5 minút. Klient často píše emotívne - prvá reakcia musí byť ľudská, nie technická.
             Nepotrebujem 10 šablón, chcem 1-2 verzie a argument, prečo budú fungovať pre TOHTO klienta.
             Ak vidíš, že používam klišé ('ospravedlňujeme sa za vzniknuté nepríjemnosti'), upozorni ma a navrhni ľudskejšiu verziu.
@@ -2201,10 +2194,10 @@ Toto je najsilnejší "aha moment" workshopu.
     <aside class="notes">
 PRÍKLAD PERSONALIZÁCIE (2 min)
 
-Konkrétny príklad pre CS agentku - analyzuj ho vetu po vete.
+Konkrétny príklad pre cestovnú konzultantku - analyzuj ho vetu po vete.
 
 6 zložiek dobrej personalizácie (pripomeň si ich):
-1. ROLA ("skúsený kolega z CS, 5 rokov")
+1. ROLA ("skúsený kolega zo zákazníckeho servisu, 5 rokov")
 2. KONTEXT ("40-60 dopytov denne, 3-5 min na každý")
 3. AKTÍVNE SPRÁVANIE ("upozorni ma keď používam klišé")
 4. KRITÉRIUM ("čas vs. riziko eskalácie")
@@ -2212,7 +2205,7 @@ Konkrétny príklad pre CS agentku - analyzuj ho vetu po vete.
 6. KONEČNÝ VÝSLEDOK ("energia na rodinu")
 
 Tipy pre publikum:
-- Rola: buď konkrétny (nie "asistent", ale "CS kolega s X rokmi")
+- Rola: buď konkrétny (nie "asistent", ale "kolega zo zákazníckeho servisu s X rokmi")
 - Kontext: časové obmedzenia, objem, tlak
 - Aktívne správanie: čo má robiť aj keď nepoprosím
 - Kritérium: cez čo má merať úspech
@@ -2224,8 +2217,8 @@ Prechod na ďalší slajd:
     </aside>
 </div>
 
-<!-- SLIDE 27: Cheat sheet - 6 komponentov dobreho promptu (Jeff Su) -->
-<div class="slide slide-content" data-slide="27">
+<!-- SLIDE 26: Cheat sheet - 6 komponentov dobreho promptu (Jeff Su) -->
+<div class="slide slide-content" data-slide="26">
     <div class="slide-inner wide">
         <div class="kicker">Cheat sheet</div>
         <h1>6 komponentov dobrého promptu.</h1>
@@ -2253,7 +2246,7 @@ Prechod na ďalší slajd:
             <div class="card" style="padding: 12px 14px;">
                 <div class="card-kicker" style="font-size: 10px;">Doplnkový</div>
                 <div class="card-title" style="font-size: 14px;">Rola (Persona)</div>
-                <div class="card-body" style="font-size: 12px;">„Si skúsený CS manažér..."</div>
+                <div class="card-body" style="font-size: 12px;">„Si skúsený kolega zo zákazníckeho servisu..."</div>
             </div>
             <div class="card" style="padding: 12px 14px;">
                 <div class="card-kicker" style="font-size: 10px;">Doplnkový</div>
@@ -2268,6 +2261,10 @@ Prechod na ďalší slajd:
         </div>
 
         <p style="margin-top: 18px; font-size: 14px; font-style: italic; color: var(--text-secondary); text-align: center;">Nie každý prompt potrebuje všetkých 6. Úloha je povinná, zvyšok pridávaj podľa toho, čo chceš zo seba dostať von.</p>
+
+        <div style="margin-top: 14px; padding: 12px 18px; background: var(--orange-light); border-left: 4px solid var(--orange); border-radius: 0 8px 8px 0; font-size: 14px;">
+            <strong style="color: var(--orange);">Tip:</strong> pri dlhých promptoch s textom a kontextom daj <strong>úlohu (Task)</strong> až na koniec. Zlepší to kvalitu výstupu.
+        </div>
     </div>
     <aside class="notes">
 CHEAT SHEET - 6 KOMPONENTOV DOBRÉHO PROMPTU (3 min)
@@ -2302,8 +2299,8 @@ PRECHOD na slide 26 (master prompt):
     </aside>
 </div>
 
-<!-- SLIDE 28: Master prompt intro + Gem link -->
-<div class="slide slide-content" data-slide="28">
+<!-- SLIDE 27: Master prompt intro + Gem link -->
+<div class="slide slide-content" data-slide="27">
     <div class="slide-inner">
         <div class="kicker">Master prompt</div>
         <h1>Tvoj osobný AI profil za 30 minút.</h1>
@@ -2354,8 +2351,8 @@ ZDIEĽAM LINK V CHATE:
     </aside>
 </div>
 
-<!-- SLIDE 29: Cvičenie - postav si master prompt -->
-<div class="slide slide-exercise" data-slide="29">
+<!-- SLIDE 28: Cvičenie - postav si master prompt -->
+<div class="slide slide-exercise" data-slide="28">
     <div class="timer-badge">⏱ 30 min</div>
     <div class="slide-inner">
         <div class="kicker" style="color: rgba(255,255,255,0.8);">Cvičenie 1</div>
@@ -2395,8 +2392,8 @@ Ale ak máš super výstup - zdieľaj. Tak rastieme."
     </aside>
 </div>
 
-<!-- SLIDE 30: SECTION TRANSITION → NotebookLM -->
-<div class="slide slide-section" data-slide="30">
+<!-- SLIDE 29: SECTION TRANSITION → NotebookLM -->
+<div class="slide slide-section" data-slide="29">
     <div class="slide-inner">
         <div class="section-num">Research superpower</div>
         <h1>NotebookLM</h1>
@@ -2411,85 +2408,79 @@ Je to research asistent."
     </aside>
 </div>
 
-<!-- SLIDE 31: NotebookLM intro -->
-<div class="slide slide-statement" data-slide="31">
-    <div class="slide-inner">
-        <div class="kicker" style="text-align: center;">NotebookLM</div>
-        <p class="statement">Nie chat.<br><span class="accent">Research asistent, ktorý číta iba tvoje dokumenty.</span></p>
-        <div style="margin-top: 40px; display: flex; justify-content: center; gap: 20px;">
-            <div class="card" style="max-width: 280px;">
-                <div class="card-kicker">Kľúčová výhoda</div>
-                <div class="card-title">Minimum halucinácií</div>
-                <div class="card-body">AI odpovedá z tvojich zdrojov a každú vetu vie odôvodniť citáciou. Ak nevie, povie „nevie".</div>
+<!-- SLIDE 30: NotebookLM - co to je + silne stranky (zlucene 30+31) -->
+<div class="slide slide-content" data-slide="30">
+    <div class="slide-inner wide">
+        <div class="kicker">NotebookLM</div>
+        <h1>Research asistent, ktorý číta <span style="color: var(--orange);">iba tvoje dokumenty.</span></h1>
+        <p style="margin-top: 12px; font-size: 16px; color: var(--text-secondary);">Spracuje veľké množstvo informácií. Každú vetu vie odôvodniť citáciou. Keď informácia v zdroji nie je, povie to.</p>
+        <div class="cards-grid cols-3" style="margin-top: 24px;">
+            <div class="card" style="border-left: 4px solid var(--green);">
+                <div class="card-kicker" style="color: var(--green);">Upload</div>
+                <div class="card-title">50+ zdrojov</div>
+                <div class="card-body">PDF, Google Docs, YouTube videá, web stránky.</div>
             </div>
-            <div class="card" style="max-width: 280px;">
-                <div class="card-kicker">Overiteľnosť</div>
-                <div class="card-title">Citácie každej odpovede</div>
+            <div class="card" style="border-left: 4px solid var(--green);">
+                <div class="card-kicker" style="color: var(--green);">Chat s citáciami</div>
+                <div class="card-title">Každá odpoveď má odkaz</div>
                 <div class="card-body">Vidíš, z ktorej strany dokumentu odpoveď pochádza.</div>
+            </div>
+            <div class="card" style="border-left: 4px solid var(--green);">
+                <div class="card-kicker" style="color: var(--green);">Study Guide</div>
+                <div class="card-title">Automatické zhrnutie</div>
+                <div class="card-body">Vygeneruje zhrnutie + otázky z dokumentu.</div>
+            </div>
+            <div class="card" style="border-left: 4px solid var(--green);">
+                <div class="card-kicker" style="color: var(--green);">Audio Overview</div>
+                <div class="card-title">Podcast za 3 minúty</div>
+                <div class="card-body">Dvaja AI moderátori prediskutujú tvoj dokument.</div>
+            </div>
+            <div class="card" style="border-left: 4px solid var(--green);">
+                <div class="card-kicker" style="color: var(--green);">Deep Research</div>
+                <div class="card-title">Hĺbková analýza</div>
+                <div class="card-body">Multi-step research naprieč všetkými zdrojmi.</div>
+            </div>
+            <div class="card" style="border-left: 4px solid var(--green);">
+                <div class="card-kicker" style="color: var(--green);">Prepojenie s Gem</div>
+                <div class="card-title">Knowledge base</div>
+                <div class="card-body">Notebook použiješ ako vedomostnú bázu pre svoj Gem.</div>
             </div>
         </div>
     </div>
     <aside class="notes">
-NOTEBOOKLM INTRO (1 min)
+NOTEBOOKLM - INTRO + SILNÉ STRÁNKY (2 min)
 
 Kľúčový rozdiel od Gemini chatu:
 - Gemini chat = pozná celý internet
 - NotebookLM = pozná IBA dokumenty, ktoré si mu nahral
 
-Výhody:
-1. Žiadne halucinácie - AI ťa nepodvedie
+VÝHODY (zhrnutie):
+1. Minimum halucinácií - AI odpovedá z tvojich zdrojov, ak nevie, povie že informácia v zdroji nie je
 2. Citácie - vieš presne, odkiaľ odpoveď pochádza
 3. Veľký kontext - až 50 zdrojov na projekt
+4. Spracuje veľké množstvo informácií naraz
 
-Ideálne pre:
-- Interné smernice, procesy
-- Pelikán dokumentáciu
-- Zmluvy, cenníky, brožúry
-
-Limit free tier: 3 Audio Overview za deň
-    </aside>
-</div>
-
-<!-- SLIDE 32: Silné stránky NotebookLM - vrátane Deep Research a Gem prepojenia -->
-<div class="slide slide-content" data-slide="32">
-    <div class="slide-inner">
-        <div class="kicker">Silné stránky</div>
-        <h1>Čo NotebookLM vie.</h1>
-        <ul class="bullets" style="margin-top: 24px;">
-            <li><strong>Upload 50+ zdrojov</strong> - PDF, Google Docs, YouTube videá, web stránky</li>
-            <li><strong>Chat s citáciami</strong> - každá odpoveď má odkaz na zdroj</li>
-            <li><strong>Study Guide</strong> - automaticky vygeneruje zhrnutie + otázky</li>
-            <li><strong>Audio Overview</strong> - podcast z tvojich dokumentov za 3 minúty</li>
-            <li><strong>Deep Research</strong> - hlboká multi-step analýza zdrojov</li>
-            <li><strong>Prepojenie s Gem</strong> - notebook použiješ ako knowledge base pre Gem</li>
-            <li><strong>Porovnanie dokumentov</strong> - rozdiely medzi starou a novou verziou</li>
-        </ul>
-    </div>
-    <aside class="notes">
-NOTEBOOKLM FUNKCIE (1 min)
-
-7 kľúčových funkcií. Rýchlo po každej:
-
+6 KĽÚČOVÝCH FUNKCIÍ (rýchlo po každej):
 1. UPLOAD: PDF, Docs, YouTube, web
    - Nahraj smernicu, zmluvu, cenník
 2. CHAT S CITÁCIAMI: každá odpoveď má link na zdroj
 3. STUDY GUIDE: automaticky vygeneruje zhrnutie
 4. AUDIO OVERVIEW: 2 AI moderátori o tvojom dokumente (3 min podcast)
-5. DEEP RESEARCH: hlboká analýza naprieč zdrojmi
-   - Zadáš otázku, AI vykoná multi-step research
-6. PREPOJENIE S GEM: nahradíš notebook ako knowledge base
-   - Postavíš Gem, ktorý má prístup k NotebookLM zdrojom
-7. POROVNANIE: starý vs. nový cenník, stará vs. nová zmluva
+5. DEEP RESEARCH: hlboká analýza naprieč zdrojmi - zadáš otázku, AI vykoná multi-step research
+6. PREPOJENIE S GEM: notebook použiješ ako knowledge base pre svoj Gem
 
 Pre Pelikán využitie:
 - Onboarding (upload všetky smernice, nový zamestnanec sa pýta)
 - FAQ (interné procesy → Audio Overview na cestu)
 - Legal (zmluvy → porovnanie verzií)
+
+Limit free tier: 3 Audio Overview za deň
+Pelikán Workspace: vyšší limit (overiť s adminom)
     </aside>
 </div>
 
-<!-- SLIDE 33: Demo + Audio Overview MERGED -->
-<div class="slide slide-content" data-slide="33">
+<!-- SLIDE 31: Demo + Audio Overview MERGED -->
+<div class="slide slide-content" data-slide="31">
     <div class="slide-inner">
         <div class="kicker">Live demo</div>
         <h1>Dokument → chat + podcast.</h1>
@@ -2508,7 +2499,7 @@ Pre Pelikán využitie:
             <div class="card">
                 <div class="card-kicker">Chat</div>
                 <div class="card-title">Konkrétna otázka, presná odpoveď</div>
-                <div class="card-body">"Aká je storno politika pre Egypt?" → odpoveď s citáciou.</div>
+                <div class="card-body">„Aké sú storno podmienky pre zrušenie zájazdu do Egypta cez TerÚr?" → odpoveď s citáciou.</div>
             </div>
             <div class="card" style="background: var(--green-light); border-color: var(--green);">
                 <div class="card-kicker" style="color: var(--green-dark);">Audio Overview</div>
@@ -2541,31 +2532,31 @@ a pustíš ho cestou domov. Za 3 minúty poznáš esenciu."
     </aside>
 </div>
 
-<!-- SLIDE 34: Use cases pre Pelikán -->
-<div class="slide slide-content" data-slide="34">
+<!-- SLIDE 32: Use cases pre Pelikán -->
+<div class="slide slide-content" data-slide="32">
     <div class="slide-inner">
         <div class="kicker">Use cases pre Pelikán</div>
         <h1>Kde to reálne použiješ.</h1>
         <div class="cards-grid cols-2" style="margin-top: 24px;">
             <div class="card">
                 <div class="card-kicker">Onboarding</div>
-                <div class="card-title">Novému zamestnancovi</div>
-                <div class="card-body">Nahraj interné smernice. Nový človek sa pýta Gemini, nemusí otravovať kolegov.</div>
+                <div class="card-title">Nový zamestnanec sa pýta Gemini, nie kolegov</div>
+                <div class="card-body">Nahraj interné smernice. Nový človek sa sám naštuduje procesy bez toho, aby otravoval kolegov.</div>
             </div>
             <div class="card">
-                <div class="card-kicker">FAQ</div>
-                <div class="card-title">Z interných procesov</div>
-                <div class="card-body">Všetko, čo sa opakovane pýtajú. Jeden zdroj pravdy.</div>
+                <div class="card-kicker">FAQ z interných procesov</div>
+                <div class="card-title">Jeden zdroj pravdy</div>
+                <div class="card-body">Všetko, čo sa opakovane kolegovia pýtajú, nahraj do notebooku. Každý si nájde odpoveď sám.</div>
             </div>
             <div class="card">
                 <div class="card-kicker">Porovnanie</div>
-                <div class="card-title">Starý vs. nový cenník</div>
-                <div class="card-body">Upload oboch, Gemini vypíše rozdiely.</div>
+                <div class="card-title">Starý vs. nový cenník + Audio Overview</div>
+                <div class="card-body">Nahraj oba dokumenty, AI vypíše rozdiely a vytvorí ti k tomu podcast na cestu.</div>
             </div>
             <div class="card">
-                <div class="card-kicker">Meetingy</div>
-                <div class="card-title">Prepisy → akčné body</div>
-                <div class="card-body">Upload prepisu, dostaneš štruktúrovaný zápis.</div>
+                <div class="card-kicker">Prepisy a akčné body</div>
+                <div class="card-title">Z meetingu k štrukturovanému zápisu</div>
+                <div class="card-body">Nahraj prepis hovoru alebo meetingu, dostaneš zápis. Pri projektoch nahraj všetky zápisy a vyťahuj informácie pri ďalšej práci.</div>
             </div>
         </div>
     </div>
@@ -2587,8 +2578,8 @@ a skús ho nahrať. Uvidíš rozdiel."
     </aside>
 </div>
 
-<!-- SLIDE 35: Cvičenie NotebookLM -->
-<div class="slide slide-exercise" data-slide="35">
+<!-- SLIDE 33: Cvičenie NotebookLM -->
+<div class="slide slide-exercise" data-slide="33">
     <div class="timer-badge">⏱ 10 min</div>
     <div class="slide-inner">
         <div class="kicker" style="color: rgba(255,255,255,0.8);">Cvičenie 2</div>
@@ -2625,8 +2616,8 @@ Ak niekto nemá svoj dokument:
     </aside>
 </div>
 
-<!-- SLIDE 36: PAUZA + BLOK C transition -->
-<div class="slide slide-section" data-slide="36">
+<!-- SLIDE 34: PAUZA + BLOK C transition -->
+<div class="slide slide-section" data-slide="34">
     <div class="slide-inner">
         <div class="section-num">Pauza · 10 min · potom Blok C</div>
         <h1>Gems, AI Act<br>a bonus nástroje</h1>
@@ -2655,8 +2646,8 @@ Počas pauzy:
     </aside>
 </div>
 
-<!-- SLIDE 37: Master prompt → Gem (MERGED 30+31) -->
-<div class="slide slide-content" data-slide="37">
+<!-- SLIDE 35: Master prompt → Gem (MERGED 30+31) -->
+<div class="slide slide-content" data-slide="35">
     <div class="slide-inner">
         <div class="kicker">Od master promptu k Gem</div>
         <h1>Gem = master prompt + úloha + knowledge.</h1>
@@ -2724,8 +2715,8 @@ Ak by bolo potrebné vysvetliť technicky:
     </aside>
 </div>
 
-<!-- SLIDE 38: Gems príklady + bezpečnosť (NOVÝ) -->
-<div class="slide slide-content" data-slide="38">
+<!-- SLIDE 36: Gems príklady + bezpečnosť (NOVÝ) -->
+<div class="slide slide-content" data-slide="36">
     <div class="slide-inner wide">
         <div class="kicker">Gems - čo už existuje a čo si postavíš</div>
         <h1>Prehľad premade Gems a inšpirácia pre vlastné.</h1>
@@ -2816,8 +2807,8 @@ Prechod: "Teraz ideme stavať tvoj vlastný Gem."
     </aside>
 </div>
 
-<!-- SLIDE 39: Cvičenie - Gem pre môj problém -->
-<div class="slide slide-exercise" data-slide="39">
+<!-- SLIDE 37: Cvičenie - Gem pre môj problém -->
+<div class="slide slide-exercise" data-slide="37">
     <div class="timer-badge">⏱ 15 min</div>
     <div class="slide-inner">
         <div class="kicker" style="color: rgba(255,255,255,0.8);">Cvičenie 3</div>
@@ -2866,8 +2857,8 @@ Po cvičení → slide 32 (prezenčka)
     </aside>
 </div>
 
-<!-- SLIDE 40: Prezenčka - preformulované -->
-<div class="slide slide-content" data-slide="40">
+<!-- SLIDE 38: Prezenčka - preformulované -->
+<div class="slide slide-content" data-slide="38">
     <div class="slide-inner">
         <div class="kicker">AI Act compliance</div>
         <h1>Prezenčku vyplníš online.</h1>
@@ -2910,8 +2901,8 @@ do týždňa. Inak sme Pelikánu nepreukázali,
     </aside>
 </div>
 
-<!-- SLIDE 41: Bonus divider - prehľad ďalších AI -->
-<div class="slide slide-content" data-slide="41">
+<!-- SLIDE 39: Bonus divider - prehľad ďalších AI -->
+<div class="slide slide-content" data-slide="39">
     <div class="slide-inner" style="text-align: center;">
         <div class="kicker">Bonus</div>
         <h1>Prehľad ďalších<br>AI nástrojov.</h1>
@@ -2929,8 +2920,8 @@ Rýchly prechod, 30 sek a ideš ďalej.
     </aside>
 </div>
 
-<!-- SLIDE 42: Voice input -->
-<div class="slide slide-content" data-slide="42">
+<!-- SLIDE 40: Voice input -->
+<div class="slide slide-content" data-slide="40">
     <div class="slide-inner">
         <div class="kicker">Bonus 1</div>
         <h1>Hlasový vstup = 3× rýchlejšie.</h1>
@@ -2982,8 +2973,8 @@ Pointa:
     </aside>
 </div>
 
-<!-- SLIDE 43: Claude + Perplexity + AI Studio - bez červeného textu -->
-<div class="slide slide-content" data-slide="43">
+<!-- SLIDE 41: Claude + Perplexity + AI Studio - bez červeného textu -->
+<div class="slide slide-content" data-slide="41">
     <div class="slide-inner">
         <div class="kicker">Bonus 2</div>
         <h1>Ešte 3 nástroje, o ktorých vieš.</h1>
@@ -3030,8 +3021,8 @@ ZMENA Z V1:
     </aside>
 </div>
 
-<!-- SLIDE 44: Nano Banana + Veo + ElevenLabs / HeyGen -->
-<div class="slide slide-content" data-slide="44">
+<!-- SLIDE 42: Nano Banana + Veo + ElevenLabs / HeyGen -->
+<div class="slide slide-content" data-slide="42">
     <div class="slide-inner">
         <div class="kicker">Bonus 3 - vyskúšaj free account</div>
         <h1>Obrázky, video, hlas a avatar.</h1>
@@ -3068,8 +3059,8 @@ kliknite na Gemini, tam sa dostanete. Pre dnes stačí vedieť,
     </aside>
 </div>
 
-<!-- SLIDE 45: Claude Code vs. Desktop - bez "pre vás nie" -->
-<div class="slide slide-content" data-slide="45">
+<!-- SLIDE 43: Claude Code vs. Desktop - bez "pre vás nie" -->
+<div class="slide slide-content" data-slide="43">
     <div class="slide-inner">
         <div class="kicker">Pre zvedavých - kedy Claude Code namiesto Desktop</div>
         <h1>Čo používam ja.</h1>
@@ -3131,8 +3122,8 @@ stačí Gemini."
     </aside>
 </div>
 
-<!-- SLIDE 46: Zdroje, ktoré sledujem -->
-<div class="slide slide-content" data-slide="46">
+<!-- SLIDE 44: Zdroje, ktoré sledujem -->
+<div class="slide slide-content" data-slide="44">
     <div class="slide-inner">
         <div class="kicker">Reading list - ak chceš držať krok</div>
         <h1>Zdroje, ktoré sledujem.</h1>
@@ -3171,8 +3162,8 @@ Nemusíte sledovať všetko - títo vyberú to najlepšie."
     </aside>
 </div>
 
-<!-- SLIDE 47: Bonus - co si postavis doma s AI (warranty tracker priklad) -->
-<div class="slide slide-content" data-slide="47">
+<!-- SLIDE 45: Bonus - co si postavis doma s AI (warranty tracker priklad) -->
+<div class="slide slide-content" data-slide="45">
     <div class="slide-inner">
         <div class="kicker">Bonus - keď to chceš doma vyskúšať</div>
         <h1>Čo si postavíš za večer s AI.</h1>
@@ -3209,8 +3200,8 @@ NIE JE TO PRE VŠETKÝCH:
     </aside>
 </div>
 
-<!-- SLIDE 48: Bonus - hlava driv, AI potom (mental health) -->
-<div class="slide slide-content" data-slide="48">
+<!-- SLIDE 46: Bonus - hlava driv, AI potom (mental health) -->
+<div class="slide slide-content" data-slide="46">
     <div class="slide-inner">
         <div class="kicker">Bonus - viac AI nerieši, ak nemáš pozornosť</div>
         <h1>Hlava prv, AI potom.</h1>
@@ -3247,8 +3238,8 @@ PREP NA Q&A:
     </aside>
 </div>
 
-<!-- SLIDE 49: Q&A + Ďakujem (orange-gradient štýl ako slide 1) -->
-<div class="slide slide-title" data-slide="49">
+<!-- SLIDE 47: Q&A + Ďakujem (orange-gradient štýl ako slide 1) -->
+<div class="slide slide-title" data-slide="47">
     <div class="slide-inner">
         <h1><span class="accent">Q&amp;A</span></h1>
         <p class="tagline"><em>Pýtaj sa.</em><br>Akákoľvek téma z workshopu.</p>
@@ -3286,12 +3277,12 @@ Po Q&A - osobný kontakt pri východe.
 <!-- ============ NAVIGATION ============ -->
 
 <div class="progress-bar">
-    <div class="progress-bar-fill" id="progress-fill" style="width: 2.0%;"></div>
+    <div class="progress-bar-fill" id="progress-fill" style="width: 2.1%;"></div>
 </div>
 
 <div class="nav-controls">
     <button class="nav-btn" id="prev-btn" onclick="prevSlide()" title="Predošlý (←)">‹</button>
-    <div class="slide-counter" id="slide-counter">1 / 49</div>
+    <div class="slide-counter" id="slide-counter">1 / 47</div>
     <button class="nav-btn" id="next-btn" onclick="nextSlide()" title="Ďalší (→)">›</button>
     <button class="nav-btn" onclick="openNotesWindow()" title="Speaker notes popup (N)" style="font-size: 13px; font-weight: 500;">📝</button>
     <button class="nav-btn" onclick="openSyncedNotesWindow()" title="Speaker notes v druhom okne pre dual-monitor (S)" style="font-size: 13px; font-weight: 500;">🖥️</button>
