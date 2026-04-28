@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>AI v dennej praxi - ťahák | Pelikán</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --orange: #F77A10;
+        --orange-dark: #D96800;
+        --dark: #191D20;
+        --surface-dark: #282828;
+        --bg-light: #F9F9FC;
+        --bg-white: #FFFFFF;
+        --border: #E0E0E0;
+        --text-body: #191D20;
+        --text-secondary: #5A6066;
+        --red: #CA324E;
+        --green: #00C069;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html, body {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        line-height: 1.4;
+        color: var(--text-body);
+        background: var(--bg-light);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== PAGE LAYOUT (A4) ===== */
+    .page {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 20px auto;
+        background: white;
+        padding: 12mm 14mm;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+        position: relative;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding-bottom: 6mm;
+        margin-bottom: 5mm;
+        border-bottom: 2px solid var(--orange);
+    }
+    .header-left h1 {
+        font-size: 20pt;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        line-height: 1.1;
+        color: var(--dark);
+    }
+    .header-left h1 .accent { color: var(--orange); }
+    .header-left .subtitle {
+        font-size: 9pt;
+        color: var(--text-secondary);
+        margin-top: 2mm;
+    }
+    .header-right {
+        text-align: right;
+        font-size: 8pt;
+        color: var(--text-secondary);
+    }
+    .header-right .brand {
+        font-size: 11pt;
+        font-weight: 500;
+        color: var(--dark);
+        letter-spacing: -0.01em;
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+        margin-bottom: 4mm;
+    }
+    .section-title {
+        font-size: 11pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--orange);
+        margin-bottom: 2mm;
+        display: flex;
+        align-items: center;
+        gap: 2mm;
+    }
+    .section-title .num {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 6mm;
+        height: 6mm;
+        background: var(--orange);
+        color: white;
+        border-radius: 50%;
+        font-size: 9pt;
+        font-weight: 700;
+    }
+
+    /* ===== SECTION 1: Decision matrix ===== */
+    .decision {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2mm;
+        font-size: 9pt;
+    }
+    .decision-box {
+        padding: 2.5mm 3mm;
+        border-radius: 2mm;
+        border-left: 3px solid;
+    }
+    .decision-yes {
+        background: rgba(0,192,105,0.06);
+        border-left-color: var(--green);
+    }
+    .decision-no {
+        background: rgba(202,50,78,0.06);
+        border-left-color: var(--red);
+    }
+    .decision-box .label {
+        font-weight: 700;
+        font-size: 9pt;
+        margin-bottom: 1mm;
+    }
+    .decision-yes .label { color: var(--green); }
+    .decision-no .label { color: var(--red); }
+    .decision-box ul {
+        list-style: none;
+        padding-left: 0;
+    }
+    .decision-box li {
+        font-size: 8.5pt;
+        line-height: 1.4;
+        padding: 0.5mm 0;
+    }
+    .decision-box li::before {
+        content: "·";
+        margin-right: 1.5mm;
+        font-weight: 700;
+    }
+
+    /* ===== SECTION 2: Prompt template ===== */
+    .prompt-template {
+        background: var(--bg-light);
+        border: 1px solid var(--border);
+        border-radius: 2mm;
+        padding: 3mm 4mm;
+        font-size: 9pt;
+    }
+    .prompt-row {
+        display: grid;
+        grid-template-columns: 22mm 1fr;
+        gap: 3mm;
+        padding: 1.2mm 0;
+        border-bottom: 1px dashed var(--border);
+    }
+    .prompt-row:last-child { border-bottom: none; }
+    .prompt-key {
+        font-weight: 700;
+        color: var(--orange);
+        font-size: 8.5pt;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+    }
+    .prompt-val {
+        font-size: 8.5pt;
+        line-height: 1.4;
+    }
+    .prompt-val .example {
+        color: var(--text-secondary);
+        font-style: italic;
+        font-size: 8pt;
+    }
+
+    /* ===== SECTION 3: Use cases ===== */
+    .usecase-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5mm;
+    }
+    .usecase {
+        background: white;
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--orange);
+        border-radius: 1.5mm;
+        padding: 2.5mm 3mm;
+    }
+    .usecase-title {
+        font-size: 9pt;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 1.2mm;
+    }
+    .usecase-steps {
+        font-size: 8pt;
+        line-height: 1.4;
+        color: var(--text-body);
+        list-style: none;
+        padding-left: 0;
+    }
+    .usecase-steps li {
+        padding: 0.3mm 0;
+        padding-left: 4mm;
+        position: relative;
+    }
+    .usecase-steps li::before {
+        content: counter(step);
+        counter-increment: step;
+        position: absolute;
+        left: 0;
+        top: 0.5mm;
+        width: 3mm;
+        height: 3mm;
+        background: var(--dark);
+        color: white;
+        border-radius: 50%;
+        font-size: 6.5pt;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+    }
+    .usecase-steps {
+        counter-reset: step;
+    }
+
+    /* ===== SECTION 4: Red lines ===== */
+    .redlines {
+        background: rgba(202,50,78,0.05);
+        border: 1px solid rgba(202,50,78,0.25);
+        border-radius: 2mm;
+        padding: 3mm 4mm;
+    }
+    .redlines-title {
+        font-size: 9pt;
+        font-weight: 700;
+        color: var(--red);
+        margin-bottom: 1.5mm;
+    }
+    .redlines-list {
+        list-style: none;
+        font-size: 8.5pt;
+        line-height: 1.45;
+    }
+    .redlines-list li {
+        padding: 0.6mm 0;
+        padding-left: 5mm;
+        position: relative;
+    }
+    .redlines-list li::before {
+        content: "✕";
+        position: absolute;
+        left: 0;
+        color: var(--red);
+        font-weight: 700;
+    }
+    .redlines-list strong { color: var(--dark); }
+
+    /* ===== SECTION 5: Improvement loop ===== */
+    .improve {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2.5mm;
+        font-size: 8.5pt;
+    }
+    .improve-step {
+        text-align: center;
+        padding: 2.5mm 2mm;
+        border: 1px solid var(--border);
+        border-radius: 1.5mm;
+        background: white;
+    }
+    .improve-step .step-icon {
+        font-size: 14pt;
+        font-weight: 700;
+        color: var(--orange);
+        line-height: 1;
+        margin-bottom: 1mm;
+    }
+    .improve-step .step-title {
+        font-size: 9pt;
+        font-weight: 700;
+        margin-bottom: 0.8mm;
+    }
+    .improve-step .step-desc {
+        font-size: 7.5pt;
+        line-height: 1.35;
+        color: var(--text-secondary);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+        margin-top: 5mm;
+        padding-top: 3mm;
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 7.5pt;
+        color: var(--text-secondary);
+    }
+    .footer .contact {
+        font-weight: 500;
+        color: var(--dark);
+    }
+    .footer a {
+        color: var(--orange);
+        text-decoration: none;
+    }
+
+    /* ===== PRINT BUTTON ===== */
+    .print-btn {
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        background: var(--orange);
+        color: white;
+        border: none;
+        padding: 10px 18px;
+        font-family: 'Roboto', sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: 999px;
+        cursor: pointer;
+        box-shadow: 0 4px 14px rgba(247,122,16,0.4);
+        z-index: 100;
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .print-btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(247,122,16,0.5);
+    }
+
+    /* ===== PRINT STYLES ===== */
+    @page {
+        size: A4;
+        margin: 0;
+    }
+    @media print {
+        html, body {
+            background: white;
+        }
+        .page {
+            margin: 0;
+            box-shadow: none;
+            width: 210mm;
+            min-height: 297mm;
+            page-break-after: avoid;
+        }
+        .print-btn {
+            display: none;
+        }
+    }
+</style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">Vytlačiť alebo uložiť ako PDF</button>
+
+<div class="page">
+
+    <div class="header">
+        <div class="header-left">
+            <h1><span class="accent">AI</span> v dennej praxi - ťahák</h1>
+            <div class="subtitle">5 vecí, ktoré ti stačia, aby ťa Gemini posunul ďalej</div>
+        </div>
+        <div class="header-right">
+            <div class="brand">Pelikán</div>
+            <div>AI Workshop 2026</div>
+        </div>
+    </div>
+
+    <!-- SECTION 1: Kedy áno, kedy nie -->
+    <div class="section">
+        <div class="section-title"><span class="num">1</span> Kedy AI áno, kedy NIE</div>
+        <div class="decision">
+            <div class="decision-box decision-yes">
+                <div class="label">Áno - AI ti pomôže</div>
+                <ul>
+                    <li>Draft emailu, ktorý potom prečítaš a opravíš</li>
+                    <li>Zhrnutie dlhšieho textu, prepisu meetingu, dokumentu</li>
+                    <li>Brainstorm nápadov (ponuka, kampaň, formulácia)</li>
+                    <li>Preklad alebo prepísanie tónu textu</li>
+                    <li>Prvý nástrel tabuľky, štruktúry, plánu</li>
+                </ul>
+            </div>
+            <div class="decision-box decision-no">
+                <div class="label">Nie - rob sám</div>
+                <ul>
+                    <li>Keď sa chceš niečo naučiť - nenechaj AI myslieť za teba</li>
+                    <li>Krátka úloha, ktorú spravíš rýchlejšie sám než formuluješ prompt</li>
+                    <li>Citlivé údaje, ktoré nesmieš zdieľať mimo Pelikán</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 2: Štruktúra promptu -->
+    <div class="section">
+        <div class="section-title"><span class="num">2</span> Štruktúra dobrého promptu (4 vrstvy)</div>
+        <div class="prompt-template">
+            <div class="prompt-row">
+                <div class="prompt-key">Rola</div>
+                <div class="prompt-val">Kým má AI byť? <span class="example">napr.: Si skúsený agent zákazníckeho servisu Pelikán.</span></div>
+            </div>
+            <div class="prompt-row">
+                <div class="prompt-key">Úloha</div>
+                <div class="prompt-val">Čo má spraviť? <span class="example">napr.: Sformuluj odpoveď na sťažnosť o zmene letu.</span></div>
+            </div>
+            <div class="prompt-row">
+                <div class="prompt-key">Kontext</div>
+                <div class="prompt-val">Čo musí vedieť, aby to spravilo dobre? <span class="example">napr.: Klient lieta s nami 5 rokov, situácia bola force majeure, refund prebieha.</span></div>
+            </div>
+            <div class="prompt-row">
+                <div class="prompt-key">Formát</div>
+                <div class="prompt-val">Ako má vyzerať výstup? <span class="example">napr.: Email v slovenčine, max 150 slov, profesionálny ale ľudský tón, vykanie.</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 3: Use cases pre Pelikán -->
+    <div class="section">
+        <div class="section-title"><span class="num">3</span> Dva use case, ktoré stoja za to spraviť dnes</div>
+        <div class="usecase-grid">
+            <div class="usecase">
+                <div class="usecase-title">Gem na spracovanie služobných ciest</div>
+                <ol class="usecase-steps">
+                    <li>V Gemini choď na "Gems" → "Nový Gem"</li>
+                    <li>Inštrukcie: "Si asistent na služobné cesty Pelikán. Z mojich poznámok urob: dátumy, cieľ, výdavky podľa kategórií, draft cestovného príkazu."</li>
+                    <li>Pridaj príklad kompletne spracovanej cesty (knowledge file)</li>
+                    <li>Pri každej ceste len pošleš poznámky a podklady → Gem doplní zvyšok</li>
+                </ol>
+            </div>
+            <div class="usecase">
+                <div class="usecase-title">Generátor odpovedí náročným klientom (CS)</div>
+                <ol class="usecase-steps">
+                    <li>Nový Gem: "Si senior agent Pelikán pre náročné prípady"</li>
+                    <li>Inštrukcie: tón (empatia + jasno), štruktúra (uznanie + fakt + riešenie + ďalší krok), zákazy (žiadne sľuby, ktoré nemôžem dodržať)</li>
+                    <li>Knowledge: 3-5 vzorových reálnych odpovedí, ktoré schválil tvoj líder</li>
+                    <li>Pri ostrej sťažnosti len napíšeš situáciu → Gem dá draft, ty doladíš a odošleš</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 4: Červené čiary -->
+    <div class="section">
+        <div class="section-title"><span class="num">4</span> Tri veci, ktoré do AI nikdy nepatria</div>
+        <div class="redlines">
+            <ul class="redlines-list">
+                <li><strong>Osobné údaje klientov</strong> - mená, emaily, telefóny, čísla pasov, čísla rezervácií spojené s menom, údaje o platbe. Ak potrebuješ AI použiť na konkrétny prípad, najprv údaje anonymizuj (napr. "klient X, let z BTS do BCN").</li>
+                <li><strong>Interné citlivé info</strong> - cenníky, marže, B2B podmienky, dohody s partnermi, neverejné stratégie. Pri pochybnosti sa spýtaj svojho lídra.</li>
+                <li><strong>Heslá a prístupy</strong> - heslá, API kľúče, prihlasovacie údaje, tokeny. Nikdy. Ani "len na vyskúšanie".</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SECTION 5: Ako sa zlepšovať -->
+    <div class="section">
+        <div class="section-title"><span class="num">5</span> Ako sa zlepšovať (3-krokový loop)</div>
+        <div class="improve">
+            <div class="improve-step">
+                <div class="step-icon">A</div>
+                <div class="step-title">Over si výsledok</div>
+                <div class="step-desc">AI klame s istotou. Vždy si over čísla, dátumy, mená, právne tvrdenia. Halucinácie vyzerajú profesionálne.</div>
+            </div>
+            <div class="improve-step">
+                <div class="step-icon">B</div>
+                <div class="step-title">Iteruj prompt</div>
+                <div class="step-desc">Prvý prompt málokedy sedí. Doplň kontext, daj príklad, povedz čo nechceš. Druhý-tretí pokus je zvyčajne ten správny.</div>
+            </div>
+            <div class="improve-step">
+                <div class="step-icon">C</div>
+                <div class="step-title">Ulož si dobré prompty</div>
+                <div class="step-desc">Čo fungovalo, daj do Google Doc "moje prompty". Postupne si vyrobíš vlastnú knižnicu, alebo z toho urob Gem.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div>Vždy si over výstup z AI pred odoslaním. AI je asistent, nie autor.</div>
+        <div class="contact">Otázky: <a href="mailto:michal.marko@pelikan.sk">michal.marko@pelikan.sk</a></div>
+    </div>
+
+</div>
+
+</body>
+</html>
